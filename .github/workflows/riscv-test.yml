@@ -1,0 +1,107 @@
+name: RISC-V Disassembler Tests
+
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+
+jobs:
+  riscv-test:
+    name: RISC-V Disassembler Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.25"
+          check-latest: true
+
+      - name: Install RISC-V cross toolchain
+        run: |
+          echo "=== Installing binutils-riscv64-linux-gnu ==="
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq binutils-riscv64-linux-gnu
+          echo ""
+          echo "=== Installed toolchain version ==="
+          riscv64-linux-gnu-objdump --version
+          echo ""
+          echo "=== Supported RISC-V targets ==="
+          riscv64-linux-gnu-objdump -i | grep -A 50 "elf64-little" | head -20
+
+      - name: Install stringer
+        run: |
+          go install golang.org/x/tools/cmd/stringer@latest
+          echo "stringer installed at: $(which stringer)"
+
+      - name: go generate
+        working-directory: riscv64/riscv64asm
+        run: |
+          echo "=== Running go generate ==="
+          go generate ./...
+          echo "go generate completed"
+
+      # ──── Static unit tests (no objdump needed) ────
+      - name: Static Unit Tests
+        working-directory: riscv64/riscv64asm
+        run: |
+          echo ""
+          echo "╔══════════════════════════════════════════════════════════════╗"
+          echo "║  STATIC UNIT TESTS (testdata/*.txt)                         ║"
+          echo "╚══════════════════════════════════════════════════════════════╝"
+          echo ""
+          echo "=== TestDecodeGNUSyntax ==="
+          go test -run '^TestDecodeGNUSyntax$' -v -count=1 2>&1
+          echo ""
+          echo "=== TestDecodeGoSyntax ==="
+          go test -run '^TestDecodeGoSyntax$' -v -count=1 2>&1
+
+      # ──── Objdump cross-validation tests ────
+      - name: Objdump Comparison Tests (GNU Syntax)
+        working-directory: riscv64/riscv64asm
+        run: |
+          echo ""
+          echo "╔══════════════════════════════════════════════════════════════╗"
+          echo "║  OBJDUMP CROSS-VALIDATION: GNU SYNTAX                       ║"
+          echo "╚══════════════════════════════════════════════════════════════╝"
+          echo ""
+          echo "=== TestObjdumpRISCV64TestDecodeGNUSyntaxdata ==="
+          go test -run '^TestObjdumpRISCV64TestDecodeGNUSyntaxdata$' -v -count=1 2>&1
+
+      - name: Objdump Comparison Tests (Plan9 Syntax)
+        working-directory: riscv64/riscv64asm
+        run: |
+          echo ""
+          echo "╔══════════════════════════════════════════════════════════════╗"
+          echo "║  OBJDUMP CROSS-VALIDATION: PLAN9 SYNTAX                     ║"
+          echo "╚══════════════════════════════════════════════════════════════╝"
+          echo ""
+          echo "=== TestObjdumpRISCV64TestDecodeGoSyntaxdata ==="
+          go test -run '^TestObjdumpRISCV64TestDecodeGoSyntaxdata$' -v -count=1 2>&1
+
+      - name: Objdump Comparison Tests (Manual Cases)
+        working-directory: riscv64/riscv64asm
+        run: |
+          echo ""
+          echo "╔══════════════════════════════════════════════════════════════╗"
+          echo "║  OBJDUMP CROSS-VALIDATION: MANUAL TEST CASES                ║"
+          echo "╚══════════════════════════════════════════════════════════════╝"
+          echo ""
+          echo "=== TestObjdumpRISCV64Manual ==="
+          go test -run '^TestObjdumpRISCV64Manual$' -v -count=1 2>&1
+
+      # ──── Final summary ────
+      - name: Test Summary
+        if: always()
+        working-directory: riscv64/riscv64asm
+        run: |
+          echo ""
+          echo "╔══════════════════════════════════════════════════════════════╗"
+          echo "║  FULL TEST SUITE SUMMARY                                    ║"
+          echo "╚══════════════════════════════════════════════════════════════╝"
+          echo ""
+          go test -v -count=1 -timeout 10m ./... 2>&1
