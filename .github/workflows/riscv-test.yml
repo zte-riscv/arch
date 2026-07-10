@@ -24,8 +24,8 @@ jobs:
       - name: Install RISC-V cross toolchain
         run: |
           echo "=== Installing binutils-riscv64-linux-gnu ==="
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq binutils-riscv64-linux-gnu
+          sudo apt update
+          sudo apt install -y binutils-riscv64-linux-gnu
           echo ""
           echo "=== Installed toolchain version ==="
           riscv64-linux-gnu-objdump --version
