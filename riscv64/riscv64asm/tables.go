@@ -196,6 +196,7 @@ const (
 	FCVT_D_WU
 	FCVT_H_L
 	FCVT_H_LU
+	FCVT_H_S
 	FCVT_H_W
 	FCVT_H_WU
 	FCVT_LU_D
@@ -213,6 +214,7 @@ const (
 	FCVT_Q_W
 	FCVT_Q_WU
 	FCVT_S_D
+	FCVT_S_H
 	FCVT_S_L
 	FCVT_S_LU
 	FCVT_S_Q
@@ -241,6 +243,7 @@ const (
 	FLE_H
 	FLE_Q
 	FLE_S
+	FLH
 	FLQ
 	FLT_D
 	FLT_H
@@ -268,8 +271,10 @@ const (
 	FMUL_Q
 	FMUL_S
 	FMV_D_X
+	FMV_H_X
 	FMV_W_X
 	FMV_X_D
+	FMV_X_H
 	FMV_X_W
 	FNMADD_D
 	FNMADD_H
@@ -292,6 +297,7 @@ const (
 	FSGNJ_H
 	FSGNJ_Q
 	FSGNJ_S
+	FSH
 	FSQ
 	FSQRT_D
 	FSQRT_H
@@ -1226,6 +1232,7 @@ var opstr = [...]string{
 	FCVT_D_WU:         "FCVT.D.WU",
 	FCVT_H_L:          "FCVT.H.L",
 	FCVT_H_LU:         "FCVT.H.LU",
+	FCVT_H_S:          "FCVT.H.S",
 	FCVT_H_W:          "FCVT.H.W",
 	FCVT_H_WU:         "FCVT.H.WU",
 	FCVT_LU_D:         "FCVT.LU.D",
@@ -1243,6 +1250,7 @@ var opstr = [...]string{
 	FCVT_Q_W:          "FCVT.Q.W",
 	FCVT_Q_WU:         "FCVT.Q.WU",
 	FCVT_S_D:          "FCVT.S.D",
+	FCVT_S_H:          "FCVT.S.H",
 	FCVT_S_L:          "FCVT.S.L",
 	FCVT_S_LU:         "FCVT.S.LU",
 	FCVT_S_Q:          "FCVT.S.Q",
@@ -1271,6 +1279,7 @@ var opstr = [...]string{
 	FLE_H:             "FLE.H",
 	FLE_Q:             "FLE.Q",
 	FLE_S:             "FLE.S",
+	FLH:               "FLH",
 	FLQ:               "FLQ",
 	FLT_D:             "FLT.D",
 	FLT_H:             "FLT.H",
@@ -1298,8 +1307,10 @@ var opstr = [...]string{
 	FMUL_Q:            "FMUL.Q",
 	FMUL_S:            "FMUL.S",
 	FMV_D_X:           "FMV.D.X",
+	FMV_H_X:           "FMV.H.X",
 	FMV_W_X:           "FMV.W.X",
 	FMV_X_D:           "FMV.X.D",
+	FMV_X_H:           "FMV.X.H",
 	FMV_X_W:           "FMV.X.W",
 	FNMADD_D:          "FNMADD.D",
 	FNMADD_H:          "FNMADD.H",
@@ -1322,6 +1333,7 @@ var opstr = [...]string{
 	FSGNJ_H:           "FSGNJ.H",
 	FSGNJ_Q:           "FSGNJ.Q",
 	FSGNJ_S:           "FSGNJ.S",
+	FSH:               "FSH",
 	FSQ:               "FSQ",
 	FSQRT_D:           "FSQRT.D",
 	FSQRT_H:           "FSQRT.H",
@@ -2444,6 +2456,8 @@ var instFormats = [...]instFormat{
 	{mask: 0xfff0007f, value: 0xd4200053, op: FCVT_H_L, args: argTypeList{arg_fd, arg_rs1}},
 	// FCVT.H.LU fd, rs1
 	{mask: 0xfff0007f, value: 0xd4300053, op: FCVT_H_LU, args: argTypeList{arg_fd, arg_rs1}},
+	// FCVT.H.S fd, fs1
+	{mask: 0xfff0007f, value: 0x44000053, op: FCVT_H_S, args: argTypeList{arg_fd, arg_fs1}},
 	// FCVT.H.W fd, rs1
 	{mask: 0xfff0007f, value: 0xd4000053, op: FCVT_H_W, args: argTypeList{arg_fd, arg_rs1}},
 	// FCVT.H.WU fd, rs1
@@ -2478,6 +2492,8 @@ var instFormats = [...]instFormat{
 	{mask: 0xfff0007f, value: 0xd6100053, op: FCVT_Q_WU, args: argTypeList{arg_fd, arg_rs1}},
 	// FCVT.S.D fd, fs1
 	{mask: 0xfff0007f, value: 0x40100053, op: FCVT_S_D, args: argTypeList{arg_fd, arg_fs1}},
+	// FCVT.S.H fd, fs1
+	{mask: 0xfff0007f, value: 0x40200053, op: FCVT_S_H, args: argTypeList{arg_fd, arg_fs1}},
 	// FCVT.S.L fd, rs1
 	{mask: 0xfff0007f, value: 0xd0200053, op: FCVT_S_L, args: argTypeList{arg_fd, arg_rs1}},
 	// FCVT.S.LU fd, rs1
@@ -2534,6 +2550,8 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0xa6000053, op: FLE_Q, args: argTypeList{arg_rd, arg_fs1, arg_fs2}},
 	// FLE.S rd, fs1, fs2
 	{mask: 0xfe00707f, value: 0xa0000053, op: FLE_S, args: argTypeList{arg_rd, arg_fs1, arg_fs2}},
+	// FLH fd, rs1_mem
+	{mask: 0x0000707f, value: 0x00001007, op: FLH, args: argTypeList{arg_fd, arg_rs1_mem}},
 	// FLQ fd, rs1_mem
 	{mask: 0x0000707f, value: 0x00004007, op: FLQ, args: argTypeList{arg_fd, arg_rs1_mem}},
 	// FLT.D rd, fs1, fs2
@@ -2588,10 +2606,14 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00007f, value: 0x10000053, op: FMUL_S, args: argTypeList{arg_fd, arg_fs1, arg_fs2}},
 	// FMV.D.X fd, rs1
 	{mask: 0xfff0707f, value: 0xf2000053, op: FMV_D_X, args: argTypeList{arg_fd, arg_rs1}},
+	// FMV.H.X fd, rs1
+	{mask: 0xfff0707f, value: 0xf4000053, op: FMV_H_X, args: argTypeList{arg_fd, arg_rs1}},
 	// FMV.W.X fd, rs1
 	{mask: 0xfff0707f, value: 0xf0000053, op: FMV_W_X, args: argTypeList{arg_fd, arg_rs1}},
 	// FMV.X.D rd, fs1
 	{mask: 0xfff0707f, value: 0xe2000053, op: FMV_X_D, args: argTypeList{arg_rd, arg_fs1}},
+	// FMV.X.H rd, fs1
+	{mask: 0xfff0707f, value: 0xe4000053, op: FMV_X_H, args: argTypeList{arg_rd, arg_fs1}},
 	// FMV.X.W rd, fs1
 	{mask: 0xfff0707f, value: 0xe0000053, op: FMV_X_W, args: argTypeList{arg_rd, arg_fs1}},
 	// FNMADD.D fd, fs1, fs2, fs3
@@ -2636,6 +2658,8 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0x26000053, op: FSGNJ_Q, args: argTypeList{arg_fd, arg_fs1, arg_fs2}},
 	// FSGNJ.S fd, fs1, fs2
 	{mask: 0xfe00707f, value: 0x20000053, op: FSGNJ_S, args: argTypeList{arg_fd, arg_fs1, arg_fs2}},
+	// FSH fs2, rs1_store
+	{mask: 0x0000707f, value: 0x00001027, op: FSH, args: argTypeList{arg_fs2, arg_rs1_store}},
 	// FSQ fs2, rs1_store
 	{mask: 0x0000707f, value: 0x00004027, op: FSQ, args: argTypeList{arg_fs2, arg_rs1_store}},
 	// FSQRT.D fd, fs1
