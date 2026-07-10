@@ -38,6 +38,7 @@ var extensions = []string{
 	"rv_zbs",
 	"rv_zicbo",
 	"rv_zfh",
+	"rv_zfhmin",
 	"rv_zicond",
 	"rv_zicsr",
 	"rv_zifencei",

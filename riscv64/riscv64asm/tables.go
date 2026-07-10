@@ -381,6 +381,12 @@ const (
 	VAADDU_VX
 	VAADD_VV
 	VAADD_VX
+	VADC_VIM
+	VADC_VVM
+	VADC_VXM
+	VADD_VI
+	VADD_VV
+	VADD_VX
 	VAESDF_VS
 	VAESDF_VV
 	VAESDM_VS
@@ -392,22 +398,6 @@ const (
 	VAESKF1_VI
 	VAESKF2_VI
 	VAESZ_VS
-	VGHSH_VV
-	VGMUL_VV
-	VSHA2CH_VV
-	VSHA2CL_VV
-	VSHA2MS_VV
-	VSM3C_VI
-	VSM3ME_VV
-	VSM4K_VI
-	VSM4R_VS
-	VSM4R_VV
-	VADC_VIM
-	VADC_VVM
-	VADC_VXM
-	VADD_VI
-	VADD_VV
-	VADD_VX
 	VAND_VI
 	VAND_VV
 	VAND_VX
@@ -513,6 +503,8 @@ const (
 	VFWSUB_VV
 	VFWSUB_WF
 	VFWSUB_WV
+	VGHSH_VV
+	VGMUL_VV
 	VID_V
 	VIOTA_M
 	VL1RE16_V
@@ -834,6 +826,9 @@ const (
 	VSEXT_VF2
 	VSEXT_VF4
 	VSEXT_VF8
+	VSHA2CH_VV
+	VSHA2CL_VV
+	VSHA2MS_VV
 	VSLIDE1DOWN_VX
 	VSLIDE1UP_VX
 	VSLIDEDOWN_VI
@@ -843,6 +838,11 @@ const (
 	VSLL_VI
 	VSLL_VV
 	VSLL_VX
+	VSM3C_VI
+	VSM3ME_VV
+	VSM4K_VI
+	VSM4R_VS
+	VSM4R_VV
 	VSMUL_VV
 	VSMUL_VX
 	VSM_V
@@ -1405,6 +1405,12 @@ var opstr = [...]string{
 	VAADDU_VX:         "VAADDU.VX",
 	VAADD_VV:          "VAADD.VV",
 	VAADD_VX:          "VAADD.VX",
+	VADC_VIM:          "VADC.VIM",
+	VADC_VVM:          "VADC.VVM",
+	VADC_VXM:          "VADC.VXM",
+	VADD_VI:           "VADD.VI",
+	VADD_VV:           "VADD.VV",
+	VADD_VX:           "VADD.VX",
 	VAESDF_VS:         "VAESDF.VS",
 	VAESDF_VV:         "VAESDF.VV",
 	VAESDM_VS:         "VAESDM.VS",
@@ -1416,22 +1422,6 @@ var opstr = [...]string{
 	VAESKF1_VI:        "VAESKF1.VI",
 	VAESKF2_VI:        "VAESKF2.VI",
 	VAESZ_VS:          "VAESZ.VS",
-	VGHSH_VV:          "VGHSH.VV",
-	VGMUL_VV:          "VGMUL.VV",
-	VSHA2CH_VV:        "VSHA2CH.VV",
-	VSHA2CL_VV:        "VSHA2CL.VV",
-	VSHA2MS_VV:        "VSHA2MS.VV",
-	VSM3C_VI:          "VSM3C.VI",
-	VSM3ME_VV:         "VSM3ME.VV",
-	VSM4K_VI:          "VSM4K.VI",
-	VSM4R_VS:          "VSM4R.VS",
-	VSM4R_VV:          "VSM4R.VV",
-	VADC_VIM:          "VADC.VIM",
-	VADC_VVM:          "VADC.VVM",
-	VADC_VXM:          "VADC.VXM",
-	VADD_VI:           "VADD.VI",
-	VADD_VV:           "VADD.VV",
-	VADD_VX:           "VADD.VX",
 	VAND_VI:           "VAND.VI",
 	VAND_VV:           "VAND.VV",
 	VAND_VX:           "VAND.VX",
@@ -1537,6 +1527,8 @@ var opstr = [...]string{
 	VFWSUB_VV:         "VFWSUB.VV",
 	VFWSUB_WF:         "VFWSUB.WF",
 	VFWSUB_WV:         "VFWSUB.WV",
+	VGHSH_VV:          "VGHSH.VV",
+	VGMUL_VV:          "VGMUL.VV",
 	VID_V:             "VID.V",
 	VIOTA_M:           "VIOTA.M",
 	VL1RE16_V:         "VL1RE16.V",
@@ -1858,6 +1850,9 @@ var opstr = [...]string{
 	VSEXT_VF2:         "VSEXT.VF2",
 	VSEXT_VF4:         "VSEXT.VF4",
 	VSEXT_VF8:         "VSEXT.VF8",
+	VSHA2CH_VV:        "VSHA2CH.VV",
+	VSHA2CL_VV:        "VSHA2CL.VV",
+	VSHA2MS_VV:        "VSHA2MS.VV",
 	VSLIDE1DOWN_VX:    "VSLIDE1DOWN.VX",
 	VSLIDE1UP_VX:      "VSLIDE1UP.VX",
 	VSLIDEDOWN_VI:     "VSLIDEDOWN.VI",
@@ -1867,6 +1862,11 @@ var opstr = [...]string{
 	VSLL_VI:           "VSLL.VI",
 	VSLL_VV:           "VSLL.VV",
 	VSLL_VX:           "VSLL.VX",
+	VSM3C_VI:          "VSM3C.VI",
+	VSM3ME_VV:         "VSM3ME.VV",
+	VSM4K_VI:          "VSM4K.VI",
+	VSM4R_VS:          "VSM4R.VS",
+	VSM4R_VV:          "VSM4R.VV",
 	VSMUL_VV:          "VSMUL.VV",
 	VSMUL_VX:          "VSMUL.VX",
 	VSM_V:             "VSM.V",
@@ -2802,6 +2802,18 @@ var instFormats = [...]instFormat{
 	{mask: 0xfc00707f, value: 0x24002057, op: VAADD_VV, args: argTypeList{arg_vm, arg_vs2, arg_vs1, arg_vd}},
 	// VAADD.VX vm, vs2, rs1, vd
 	{mask: 0xfc00707f, value: 0x24006057, op: VAADD_VX, args: argTypeList{arg_vm, arg_vs2, arg_rs1, arg_vd}},
+	// VADC.VIM vs2, simm5, vd
+	{mask: 0xfe00707f, value: 0x40003057, op: VADC_VIM, args: argTypeList{arg_vs2, arg_simm5, arg_vd}},
+	// VADC.VVM vs2, vs1, vd
+	{mask: 0xfe00707f, value: 0x40000057, op: VADC_VVM, args: argTypeList{arg_vs2, arg_vs1, arg_vd}},
+	// VADC.VXM vs2, rs1, vd
+	{mask: 0xfe00707f, value: 0x40004057, op: VADC_VXM, args: argTypeList{arg_vs2, arg_rs1, arg_vd}},
+	// VADD.VI vm, vs2, simm5, vd
+	{mask: 0xfc00707f, value: 0x00003057, op: VADD_VI, args: argTypeList{arg_vm, arg_vs2, arg_simm5, arg_vd}},
+	// VADD.VV vm, vs2, vs1, vd
+	{mask: 0xfc00707f, value: 0x00000057, op: VADD_VV, args: argTypeList{arg_vm, arg_vs2, arg_vs1, arg_vd}},
+	// VADD.VX vm, vs2, rs1, vd
+	{mask: 0xfc00707f, value: 0x00004057, op: VADD_VX, args: argTypeList{arg_vm, arg_vs2, arg_rs1, arg_vd}},
 	// VAESDF.VS vs2, vd
 	{mask: 0xfe0ff07f, value: 0xa600a077, op: VAESDF_VS, args: argTypeList{arg_vs2, arg_vd}},
 	// VAESDF.VV vs2, vd
@@ -2824,38 +2836,6 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0xaa002077, op: VAESKF2_VI, args: argTypeList{arg_vs2, arg_zimm, arg_vd}},
 	// VAESZ.VS vs2, vd
 	{mask: 0xfe0ff07f, value: 0xa603a077, op: VAESZ_VS, args: argTypeList{arg_vs2, arg_vd}},
-	// VGHSH.VV vs2, vs1, vd
-	{mask: 0xfe00707f, value: 0xb2002077, op: VGHSH_VV, args: argTypeList{arg_vs2, arg_vs1, arg_vd}},
-	// VGMUL.VV vs2, vd
-	{mask: 0xfe0ff07f, value: 0xa208a077, op: VGMUL_VV, args: argTypeList{arg_vs2, arg_vd}},
-	// VSHA2CH.VV vs2, vs1, vd
-	{mask: 0xfe00707f, value: 0xba002077, op: VSHA2CH_VV, args: argTypeList{arg_vs2, arg_vs1, arg_vd}},
-	// VSHA2CL.VV vs2, vs1, vd
-	{mask: 0xfe00707f, value: 0xbe002077, op: VSHA2CL_VV, args: argTypeList{arg_vs2, arg_vs1, arg_vd}},
-	// VSHA2MS.VV vs2, vs1, vd
-	{mask: 0xfe00707f, value: 0xb6002077, op: VSHA2MS_VV, args: argTypeList{arg_vs2, arg_vs1, arg_vd}},
-	// VSM3C.VI vs2, zimm, vd
-	{mask: 0xfe00707f, value: 0xae002077, op: VSM3C_VI, args: argTypeList{arg_vs2, arg_zimm, arg_vd}},
-	// VSM3ME.VV vs2, vs1, vd
-	{mask: 0xfe00707f, value: 0x82002077, op: VSM3ME_VV, args: argTypeList{arg_vs2, arg_vs1, arg_vd}},
-	// VSM4K.VI vs2, zimm, vd
-	{mask: 0xfe00707f, value: 0x86002077, op: VSM4K_VI, args: argTypeList{arg_vs2, arg_zimm, arg_vd}},
-	// VSM4R.VS vs2, vd
-	{mask: 0xfe0ff07f, value: 0xa6082077, op: VSM4R_VS, args: argTypeList{arg_vs2, arg_vd}},
-	// VSM4R.VV vs2, vd
-	{mask: 0xfe0ff07f, value: 0xa2082077, op: VSM4R_VV, args: argTypeList{arg_vs2, arg_vd}},
-	// VADC.VIM vs2, simm5, vd
-	{mask: 0xfe00707f, value: 0x40003057, op: VADC_VIM, args: argTypeList{arg_vs2, arg_simm5, arg_vd}},
-	// VADC.VVM vs2, vs1, vd
-	{mask: 0xfe00707f, value: 0x40000057, op: VADC_VVM, args: argTypeList{arg_vs2, arg_vs1, arg_vd}},
-	// VADC.VXM vs2, rs1, vd
-	{mask: 0xfe00707f, value: 0x40004057, op: VADC_VXM, args: argTypeList{arg_vs2, arg_rs1, arg_vd}},
-	// VADD.VI vm, vs2, simm5, vd
-	{mask: 0xfc00707f, value: 0x00003057, op: VADD_VI, args: argTypeList{arg_vm, arg_vs2, arg_simm5, arg_vd}},
-	// VADD.VV vm, vs2, vs1, vd
-	{mask: 0xfc00707f, value: 0x00000057, op: VADD_VV, args: argTypeList{arg_vm, arg_vs2, arg_vs1, arg_vd}},
-	// VADD.VX vm, vs2, rs1, vd
-	{mask: 0xfc00707f, value: 0x00004057, op: VADD_VX, args: argTypeList{arg_vm, arg_vs2, arg_rs1, arg_vd}},
 	// VAND.VI vm, vs2, simm5, vd
 	{mask: 0xfc00707f, value: 0x24003057, op: VAND_VI, args: argTypeList{arg_vm, arg_vs2, arg_simm5, arg_vd}},
 	// VAND.VV vm, vs2, vs1, vd
@@ -3066,6 +3046,10 @@ var instFormats = [...]instFormat{
 	{mask: 0xfc00707f, value: 0xd8005057, op: VFWSUB_WF, args: argTypeList{arg_vm, arg_vs2, arg_fs1, arg_vd}},
 	// VFWSUB.WV vm, vs2, vs1, vd
 	{mask: 0xfc00707f, value: 0xd8001057, op: VFWSUB_WV, args: argTypeList{arg_vm, arg_vs2, arg_vs1, arg_vd}},
+	// VGHSH.VV vs2, vs1, vd
+	{mask: 0xfe00707f, value: 0xb2002077, op: VGHSH_VV, args: argTypeList{arg_vs2, arg_vs1, arg_vd}},
+	// VGMUL.VV vs2, vd
+	{mask: 0xfe0ff07f, value: 0xa208a077, op: VGMUL_VV, args: argTypeList{arg_vs2, arg_vd}},
 	// VID.V vm, vd
 	{mask: 0xfdfff07f, value: 0x5008a057, op: VID_V, args: argTypeList{arg_vm, arg_vd}},
 	// VIOTA.M vm, vs2, vd
@@ -3708,6 +3692,12 @@ var instFormats = [...]instFormat{
 	{mask: 0xfc0ff07f, value: 0x4802a057, op: VSEXT_VF4, args: argTypeList{arg_vm, arg_vs2, arg_vd}},
 	// VSEXT.VF8 vm, vs2, vd
 	{mask: 0xfc0ff07f, value: 0x4801a057, op: VSEXT_VF8, args: argTypeList{arg_vm, arg_vs2, arg_vd}},
+	// VSHA2CH.VV vs2, vs1, vd
+	{mask: 0xfe00707f, value: 0xba002077, op: VSHA2CH_VV, args: argTypeList{arg_vs2, arg_vs1, arg_vd}},
+	// VSHA2CL.VV vs2, vs1, vd
+	{mask: 0xfe00707f, value: 0xbe002077, op: VSHA2CL_VV, args: argTypeList{arg_vs2, arg_vs1, arg_vd}},
+	// VSHA2MS.VV vs2, vs1, vd
+	{mask: 0xfe00707f, value: 0xb6002077, op: VSHA2MS_VV, args: argTypeList{arg_vs2, arg_vs1, arg_vd}},
 	// VSLIDE1DOWN.VX vm, vs2, rs1, vd
 	{mask: 0xfc00707f, value: 0x3c006057, op: VSLIDE1DOWN_VX, args: argTypeList{arg_vm, arg_vs2, arg_rs1, arg_vd}},
 	// VSLIDE1UP.VX vm, vs2, rs1, vd
@@ -3726,6 +3716,16 @@ var instFormats = [...]instFormat{
 	{mask: 0xfc00707f, value: 0x94000057, op: VSLL_VV, args: argTypeList{arg_vm, arg_vs2, arg_vs1, arg_vd}},
 	// VSLL.VX vm, vs2, rs1, vd
 	{mask: 0xfc00707f, value: 0x94004057, op: VSLL_VX, args: argTypeList{arg_vm, arg_vs2, arg_rs1, arg_vd}},
+	// VSM3C.VI vs2, zimm, vd
+	{mask: 0xfe00707f, value: 0xae002077, op: VSM3C_VI, args: argTypeList{arg_vs2, arg_zimm, arg_vd}},
+	// VSM3ME.VV vs2, vs1, vd
+	{mask: 0xfe00707f, value: 0x82002077, op: VSM3ME_VV, args: argTypeList{arg_vs2, arg_vs1, arg_vd}},
+	// VSM4K.VI vs2, zimm, vd
+	{mask: 0xfe00707f, value: 0x86002077, op: VSM4K_VI, args: argTypeList{arg_vs2, arg_zimm, arg_vd}},
+	// VSM4R.VS vs2, vd
+	{mask: 0xfe0ff07f, value: 0xa6082077, op: VSM4R_VS, args: argTypeList{arg_vs2, arg_vd}},
+	// VSM4R.VV vs2, vd
+	{mask: 0xfe0ff07f, value: 0xa2082077, op: VSM4R_VV, args: argTypeList{arg_vs2, arg_vd}},
 	// VSMUL.VV vm, vs2, vs1, vd
 	{mask: 0xfc00707f, value: 0x9c000057, op: VSMUL_VV, args: argTypeList{arg_vm, arg_vs2, arg_vs1, arg_vd}},
 	// VSMUL.VX vm, vs2, rs1, vd
