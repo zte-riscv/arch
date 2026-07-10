@@ -21,17 +21,61 @@ jobs:
           go-version: "1.25"
           check-latest: true
 
-      - name: Install RISC-V cross toolchain
+      - name: Build RISC-V binutils from source
         run: |
-          echo "=== Installing binutils-riscv64-linux-gnu ==="
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq binutils-riscv64-linux-gnu
+          set -e
+
+          # Ubuntu 24.04 (Noble) only ships binutils 2.42 in its repos,
+          # which does NOT support Zacas and other newer RISC-V extensions.
+          # Build binutils 2.44 from source (~3-5 min) for reliable CI.
+          BINUTILS_VERSION="2.44"
+          INSTALL_DIR="/opt/riscv64-toolchain"
+
+          echo "=== Installing build dependencies ==="
+          sudo apt update -qq
+          sudo apt install -y -qq build-essential texinfo flex bison
+          echo ""
+
+          echo "=== Building GNU binutils ${BINUTILS_VERSION} for riscv64-linux-gnu ==="
+          echo ""
+
+          # Download
+          wget -q "https://ftp.gnu.org/gnu/binutils/binutils-${BINUTILS_VERSION}.tar.xz"
+          echo "Downloaded binutils-${BINUTILS_VERSION}.tar.xz"
+
+          # Extract
+          tar xf "binutils-${BINUTILS_VERSION}.tar.xz"
+          cd "binutils-${BINUTILS_VERSION}"
+
+          # Configure — only build binutils, skip gdb/gdbserver to save time
+          echo "=== Configuring ==="
+          mkdir build && cd build
+          ../configure \
+            --target=riscv64-linux-gnu \
+            --prefix="${INSTALL_DIR}" \
+            --disable-gdb \
+            --disable-gdbserver \
+            --disable-nls \
+            --disable-werror
+
+          # Build
+          echo "=== Building (using $(nproc) jobs) ==="
+          make -j$(nproc)
+
+          # Install
+          echo "=== Installing ==="
+          sudo make install
+
+          # Add to PATH for subsequent steps
+          echo "${INSTALL_DIR}/bin" >> "${GITHUB_PATH}"
+
+          cd ../..
           echo ""
           echo "=== Installed toolchain version ==="
-          riscv64-linux-gnu-objdump --version
+          "${INSTALL_DIR}/bin/riscv64-linux-gnu-objdump" --version
           echo ""
           echo "=== Supported RISC-V targets ==="
-          riscv64-linux-gnu-objdump -i | grep -A 50 "elf64-little" | head -20
+          "${INSTALL_DIR}/bin/riscv64-linux-gnu-objdump" -i | grep riscv || true
 
       - name: Install stringer
         run: |
