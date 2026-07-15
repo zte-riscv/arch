@@ -330,14 +330,6 @@ a32f537e|	sw x5,2047(x6)
 b3427300|	xor x5,x6,x7
 9342f37f|	xori x5,x6,2047
 93c2ffff|	not x5,x31
-bb003108|	add.uw x1,x2,x3
-33a26220|	sh1add x4,x5,x6
-bb239420|	sh1add.uw x7,x8,x9
-33c5c520|	sh2add x10,x11,x12
-bb46f720|	sh2add.uw x13,x14,x15
-33e82821|	sh3add x16,x17,x18
-bb695a21|	sh3add.uw x19,x20,x21
-1b9b7b09|	slli.uw x22,x23,0x17
 33fcac41|	andn x24,x25,x26
 b36dde41|	orn x27,x28,x29
 33cf1f40|	xnor x30,x31,x1
@@ -432,6 +424,20 @@ b373530e|	czero.nez x7,x6,x5
 13e0121c|	prefetch.r 448(x5)
 13e0321c|	prefetch.w 448(x5)
 13e07200|	ori x0,x5,7
+
+# "B" Extension for Bit Manipulation, Version 1.0.0
+
+# 28.4.1. Zba: Address generation
+bb003108|	add.uw x1,x2,x3
+33a26220|	sh1add x4,x5,x6
+bb239420|	sh1add.uw x7,x8,x9
+33c5c520|	sh2add x10,x11,x12
+bb46f720|	sh2add.uw x13,x14,x15
+33e82821|	sh3add x16,x17,x18
+bb695a21|	sh3add.uw x19,x20,x21
+1b9b7b09|	slli.uw x22,x23,0x17
+bb020308|	zext.w x5,x6
+
 # 28.4.3： Zbc: Carry-less multiplication
 b313530a|	clmul	x7,x6,x5
 b333530a|	clmulh	x7,x6,x5
