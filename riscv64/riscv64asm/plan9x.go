@@ -329,6 +329,12 @@ goSyntaxSwitch:
 			args = args[:len(args)-1]
 		}
 
+	case ADD_UW:
+		if inst.Args[2].(Reg) == X0 {
+			op = "ZEXTW"
+			args = args[:len(args)-1]
+		}
+
 	case XORI:
 		if inst.Args[2].(Simm).String() == "-1" {
 			op = "NOT"
