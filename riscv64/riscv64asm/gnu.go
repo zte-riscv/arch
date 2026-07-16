@@ -92,6 +92,12 @@ gnuSyntaxSwitch:
 			args = args[:len(args)-1]
 		}
 
+	case ADD_UW:
+		if inst.Args[2].(Reg) == X0 {
+			op = "zext.w"
+			args = args[:len(args)-1]
+		}
+
 	case BEQ:
 		if inst.Args[1].(Reg) == X0 {
 			op = "beqz"
