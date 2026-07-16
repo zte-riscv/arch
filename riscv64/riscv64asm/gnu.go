@@ -378,7 +378,6 @@ gnuSyntaxSwitch:
 
 	case VSETVL:
 		args[0], args[2] = args[2], args[0]
-
 	}
 
 	if args != nil {
