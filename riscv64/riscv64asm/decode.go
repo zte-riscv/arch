@@ -236,6 +236,11 @@ func decodeArg(aop argType, x uint32, index int) Arg {
 		imm := x << 12 >> 27
 		return Uimm{imm, true}
 
+	case arg_zimm6:
+		// 6-bit unsigned immediate from bit 26 (hi) and bits 19:15 (lo)
+		imm := (x >> 15) & 0x1f | (x >> 21) & 0x20
+		return Uimm{imm, true}
+
 	case arg_vtype_zimm10:
 		imm := x << 2 >> 22
 		return VType(imm)

@@ -1781,6 +1781,50 @@ d730209e|	vmv1r.v v1,v2
 57b2819e|	vmv4r.v v4,v8
 57b0839e|	vmv8r.v v0,v8
 
+# 33.2.1. Zvbb - Vector Basic Bit-manipulation
+d7812006|	vandn.vv v3,v2,v1
+d7812004|	vandn.vv v3,v2,v1,v0.t
+d7412506|	vandn.vx v3,v2,x10
+d7412504|	vandn.vx v3,v2,x10,v0.t
+d721254a|	vbrev.v v3,v2
+d7212548|	vbrev.v v3,v2,v0.t
+d721244a|	vbrev8.v v3,v2
+d7212448|	vbrev8.v v3,v2,v0.t
+d7a1244a|	vrev8.v v3,v2
+d7a12448|	vrev8.v v3,v2,v0.t
+d721264a|	vclz.v v3,v2
+d7212648|	vclz.v v3,v2,v0.t
+d7a1264a|	vctz.v v3,v2
+d7a12648|	vctz.v v3,v2,v0.t
+d721274a|	vcpop.v v3,v2
+d7212748|	vcpop.v v3,v2,v0.t
+d78120d6|	vwsll.vv v3,v2,v1
+d78120d4|	vwsll.vv v3,v2,v1,v0.t
+d74125d6|	vwsll.vx v3,v2,x10
+d74125d4|	vwsll.vx v3,v2,x10,v0.t
+d7b127d6|	vwsll.vi v3,v2,15
+d7b127d4|	vwsll.vi v3,v2,15,v0.t
+d7812056|	vrol.vv v3,v2,v1
+d7812054|	vrol.vv v3,v2,v1,v0.t
+d7412556|	vrol.vx v3,v2,x10
+d7412554|	vrol.vx v3,v2,x10,v0.t
+d7b12752|	vror.vi v3,v2,15
+d7b12750|	vror.vi v3,v2,15,v0.t
+d7812052|	vror.vv v3,v2,v1
+d7812050|	vror.vv v3,v2,v1,v0.t
+d7412552|	vror.vx v3,v2,x10
+d7412550|	vror.vx v3,v2,x10,v0.t
+
+# 33.2.2. Zvbc - Vector Carryless Multiplication
+d7a12032|	vclmul.vv v3,v2,v1
+d7a12030|	vclmul.vv v3,v2,v1,v0.t
+d7612532|	vclmul.vx v3,v2,x10
+d7612530|	vclmul.vx v3,v2,x10,v0.t
+d7a12036|	vclmulh.vv v3,v2,v1
+d7a12034|	vclmulh.vv v3,v2,v1,v0.t
+d7612536|	vclmulh.vx v3,v2,x10
+d7612534|	vclmulh.vx v3,v2,x10,v0.t
+
 # 32.2.4: Vector GCM/GMAC
 f7a120b2|	vghsh.vv v3,v2,v1
 f7a128a2|	vgmul.vv v3,v2
