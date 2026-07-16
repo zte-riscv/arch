@@ -71,7 +71,7 @@ goSyntaxSwitch:
 
 	case ADDIW:
 		if inst.Args[2].(Simm).Imm == 0 {
-			op = "MOVW"
+			op = "SEXTW"
 			args = args[:len(args)-1]
 		}
 
@@ -390,6 +390,7 @@ goSyntaxSwitch:
 
 	case VSETVL:
 		args[0], args[2] = args[2], args[0]
+
 	}
 
 	// Reverse args, placing dest last.

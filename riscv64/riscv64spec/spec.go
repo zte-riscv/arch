@@ -36,6 +36,7 @@ var extensions = []string{
 	"rv_zbb",
 	"rv_zbc",
 	"rv_zbs",
+	"rv_zcb",
 	"rv_zicbo",
 	"rv_zfh",
 	"rv_zfhmin",
@@ -57,6 +58,7 @@ var extensions = []string{
 	"rv64_zba",
 	"rv64_zbb",
 	"rv64_zbs",
+	"rv64_zcb",
 	"rv64_zfh",
 }
 
@@ -507,6 +509,12 @@ func decodeArgs(arg string, op string) string {
 
 	case arg == "c_nzimm18lo":
 		return "arg_c_nzimm18"
+
+	case arg == "c_uimm2":
+		return "arg_c_uimm2"
+
+	case arg == "c_uimm1":
+		return "arg_c_uimm1"
 	}
 	return ""
 }
