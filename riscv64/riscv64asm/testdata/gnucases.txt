@@ -409,6 +409,10 @@ a260|	ld x1,8(x2)
 b353530e|	czero.eqz x7,x6,x5
 b373530e|	czero.nez x7,x6,x5
 
+# 15. "Zawrs" Extension for Wait-on-Reservation-Set instructions, Version 1.01
+7300d000|	wrs.nto
+7300d001|	wrs.sto
+
 # 16.: "Zabha" Extension for Byte and Halfword Atomic Memory Operations, Version 1.0
 af826300|	amoadd.b x5,x6,(x7)
 af826304|	amoadd.b.aq x5,x6,(x7)
