@@ -390,7 +390,6 @@ goSyntaxSwitch:
 
 	case VSETVL:
 		args[0], args[2] = args[2], args[0]
-
 	}
 
 	// Reverse args, placing dest last.
