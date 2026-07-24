@@ -119,7 +119,7 @@ func main() {
 
 			// skip $pseudo_op except rv_zbb/rv64_zbb
 			if words[0][0] == '$' {
-				if ext != "rv_zbb" && ext != "rv64_zbb" {
+				if ext != "rv64_zbb" {
 					continue
 				}
 				words = words[2:]
