@@ -55,6 +55,8 @@ var extensions = []string{
 	"rv_zvknha",
 	"rv_zvksed",
 	"rv_zvksh",
+	"rv_zvbb",
+	"rv_zvbc",
 	"rv64_a",
 	"rv64_c",
 	"rv64_d",
@@ -342,8 +344,11 @@ func inferFormats(argTypeList []string, op string) string {
 	case op == "VSLL_VI" || op == "VSRL_VI" || op == "VSRA_VI" || op == "VNSRL_WI" ||
 		op == "VNSRA_WI" || op == "VSSRL_VI" || op == "VSSRA_VI" || op == "VNCLIPU_WI" ||
 		op == "VNCLIP_WI" || op == "VSLIDEUP_VI" || op == "VSLIDEDOWN_VI" ||
-		op == "VRGATHER_VI":
+		op == "VRGATHER_VI" || op == "VWSLL_VI":
 		return "arg_vm, arg_vs2, arg_zimm5, arg_vd"
+
+	case op == "VROR_VI":
+		return "arg_vm, arg_vs2, arg_zimm6, arg_vd"
 
 	default:
 		var instStr []string

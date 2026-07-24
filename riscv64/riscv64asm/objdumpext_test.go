@@ -292,7 +292,7 @@ func writeELF64(f *os.File, size int) error {
 		"zawrs1p0_" +
 		"zabha1p0_zacas1p0_zicbom1p0_zicbop1p0_zicboz1p0_zicond1p0_zihintntl1p0_zmmul1p0_" +
 		"zfa1p0_zfh1p0_zfhmin1p0_zba1p0_zbb1p0_zbc1p0_zbs1p0_zcb1p0_" +
-		"zvkg1p0_zvkned1p0_zvknha1p0_zvknhb1p0_zvksed1p0_zvksh1p0"
+		"zvbb1p0_zvbc1p0_zvkg1p0_zvkned1p0_zvknha1p0_zvknhb1p0_zvksed1p0_zvksh1p0"
 	b := buildRISCVAttributes(exts)
 	sect = elf.Section64{
 		Name:      uint32(len("\x00.text\x00")),

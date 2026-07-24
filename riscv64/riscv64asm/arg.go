@@ -105,6 +105,7 @@ const (
 	arg_vtype_zimm10
 	arg_vtype_zimm11
 	arg_bimm12
+	arg_zimm6
 	arg_imm20
 	arg_jimm20
 	arg_shamt5
