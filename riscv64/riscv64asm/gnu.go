@@ -394,6 +394,18 @@ gnuSyntaxSwitch:
 
 	case VSETVL:
 		args[0], args[2] = args[2], args[0]
+
+	case FLI_S, FLI_D, FLI_H, FLI_Q:
+		if len(args) > 1 {
+			args[1] = fliConstants[inst.Args[1].(Uimm).Imm]
+		}
+
+	case FROUND_S, FROUND_D, FROUND_H, FROUND_Q,
+		FROUNDNX_S, FROUNDNX_D, FROUNDNX_H, FROUNDNX_Q:
+		args = append(args, frmName((inst.Enc>>12)&0x7))
+
+	case FCVTMOD_W_D:
+		args = append(args, "rtz")
 	}
 
 	if args != nil {
@@ -457,4 +469,63 @@ func gnuVectorOp(inst Inst, args []string) string {
 	op = strings.ToLower(op)
 
 	return op + " " + strings.Join(args, ",")
+}
+
+// frmName returns the GNU assembler rounding mode suffix for the given
+// funct3 rounding mode encoding.
+func frmName(funct3 uint32) string {
+	switch funct3 {
+	case 0:
+		return "rne"
+	case 1:
+		return "rtz"
+	case 2:
+		return "rdn"
+	case 3:
+		return "rup"
+	case 4:
+		return "rmm"
+	case 7:
+		return "dyn"
+	default:
+		return "unknown"
+	}
+}
+
+// fliConstants provides the objdump-format string for each of the 32 FLI
+// immediate values. The constants are the same for all precisions (S/D/H/Q)
+// except for index 1 (minimum positive normal), which objdump shows as "min".
+var fliConstants = [32]string{
+	"-0x1p+0",  // -1.0
+	"min",      // minimum positive normal
+	"0x1p-16",  // 2^-16
+	"0x1p-15",  // 2^-15
+	"0x1p-8",   // 2^-8
+	"0x1p-7",   // 2^-7
+	"0x1p-4",   // 2^-4
+	"0x1p-3",   // 2^-3
+	"0x1p-2",   // 0.25
+	"0x1.4p-2", // 0.3125
+	"0x1.8p-2", // 0.375
+	"0x1.cp-2", // 0.4375
+	"0x1p-1",   // 0.5
+	"0x1.4p-1", // 0.625
+	"0x1.8p-1", // 0.75
+	"0x1.cp-1", // 0.875
+	"0x1p+0",   // 1.0
+	"0x1.4p+0", // 1.25
+	"0x1.8p+0", // 1.5
+	"0x1.cp+0", // 1.75
+	"0x1p+1",   // 2.0
+	"0x1.4p+1", // 2.5
+	"0x1.8p+1", // 3.0
+	"0x1p+2",   // 4.0
+	"0x1p+3",   // 8.0
+	"0x1p+4",   // 16.0
+	"0x1p+7",   // 128.0
+	"0x1p+8",   // 256.0
+	"0x1p+15",  // 2^15
+	"0x1p+16",  // 2^16
+	"inf",      // +Inf
+	"nan",      // canonical NaN
 }
