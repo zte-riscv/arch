@@ -35,10 +35,14 @@ var extensions = []string{
 	"rv_q",
 	"rv_q_zfa",
 	"rv_v",
+	"rv_zabha",
+	"rv_zabha_zacas",
+	"rv_zawrs",
 	"rv_zba",
 	"rv_zbb",
 	"rv_zbc",
 	"rv_zbs",
+	"rv_zcb",
 	"rv_zicbo",
 	"rv_zfh",
 	"rv_zfh_zfa",
@@ -62,6 +66,7 @@ var extensions = []string{
 	"rv64_zba",
 	"rv64_zbb",
 	"rv64_zbs",
+	"rv64_zcb",
 	"rv64_zfh",
 }
 
@@ -119,7 +124,7 @@ func main() {
 
 			// skip $pseudo_op except rv_zbb/rv64_zbb
 			if words[0][0] == '$' {
-				if ext != "rv_zbb" && ext != "rv64_zbb" {
+				if ext != "rv64_zbb" {
 					continue
 				}
 				words = words[2:]
@@ -517,6 +522,12 @@ func decodeArgs(arg string, op string) string {
 
 	case arg == "c_nzimm18lo":
 		return "arg_c_nzimm18"
+
+	case arg == "c_uimm2":
+		return "arg_c_uimm2"
+
+	case arg == "c_uimm1":
+		return "arg_c_uimm1"
 	}
 	return ""
 }
