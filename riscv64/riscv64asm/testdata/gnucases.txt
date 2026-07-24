@@ -330,46 +330,6 @@ a32f537e|	sw x5,2047(x6)
 b3427300|	xor x5,x6,x7
 9342f37f|	xori x5,x6,2047
 93c2ffff|	not x5,x31
-bb003108|	add.uw x1,x2,x3
-33a26220|	sh1add x4,x5,x6
-bb239420|	sh1add.uw x7,x8,x9
-33c5c520|	sh2add x10,x11,x12
-bb46f720|	sh2add.uw x13,x14,x15
-33e82821|	sh3add x16,x17,x18
-bb695a21|	sh3add.uw x19,x20,x21
-1b9b7b09|	slli.uw x22,x23,0x17
-33fcac41|	andn x24,x25,x26
-b36dde41|	orn x27,x28,x29
-33cf1f40|	xnor x30,x31,x1
-13910160|	clz x2,x3
-1b920260|	clzw x4,x5
-13931360|	ctz x6,x7
-1b941460|	ctzw x8,x9
-13952560|	cpop x10,x11
-1b962660|	cpopw x12,x13
-33e7070b|	max x14,x15,x16
-b378390b|	maxu x17,x18,x19
-33ca6a0b|	min x20,x21,x22
-b35b9c0b|	minu x23,x24,x25
-139d4d60|	sext.b x26,x27
-139e5e60|	sext.h x28,x29
-3bcf0f08|	zext.h x30,x31
-b3102060|	rol x1,x0,x2
-bb115260|	rolw x3,x4,x5
-33d38360|	ror x6,x7,x8
-9354a560|	rori x9,x10,0xa
-9b55e660|	roriw x11,x12,0xe
-bb56f760|	rorw x13,x14,x15
-13d87828|	orc.b x16,x17
-13d9896b|	rev8 x18,x19
-339a6a49|	bclr x20,x21,x22
-931bfc48|	bclri x23,x24,0xf
-b35cbd49|	bext x25,x26,x27
-13de8e48|	bexti x28,x29,0x8
-339f0f68|	binv x30,x31,x0
-9310016a|	binvi x1,x2,0x20
-b3115228|	bset x3,x4,x5
-1393f32b|	bseti x6,x7,0x3f
 4000|	addi x8,x2,4
 2041|	lw x8,64(x10)
 94d0|	sw x13,32(x9)
@@ -410,12 +370,89 @@ a260|	ld x1,8(x2)
 8624|	fld f9,64(x2)
 3eb0|	fsd f15,32(x2)
 
+# 8.1. "Zicntr" Extension for Base Counters and Timers
+f32200c0|	rdcycle x5
+f32210c0|	rdtime x5
+f32220c0|	rdinstret x5
+
+# 9. "Zihintntl" Extension for Non-Temporal Locality Hints, Version 1.0
+33002000|	ntl.p1
+33003000|	ntl.pall
+33004000|	ntl.s1
+33005000|	ntl.all
+
 # 10.1: "Zihintpause" Extension for Pause Hint, Version 1.0.0
 0f000001|	pause
 
 # 12.3: "Zicond" Extension for Integer Conditional Operations, Version 1.0.0
 b353530e|	czero.eqz x7,x6,x5
 b373530e|	czero.nez x7,x6,x5
+
+# 15. "Zawrs" Extension for Wait-on-Reservation-Set instructions, Version 1.01
+7300d000|	wrs.nto
+7300d001|	wrs.sto
+
+# 16.: "Zabha" Extension for Byte and Halfword Atomic Memory Operations, Version 1.0
+af826300|	amoadd.b x5,x6,(x7)
+af826304|	amoadd.b.aq x5,x6,(x7)
+af826302|	amoadd.b.rl x5,x6,(x7)
+af926300|	amoadd.h x5,x6,(x7)
+af926304|	amoadd.h.aq x5,x6,(x7)
+af926302|	amoadd.h.rl x5,x6,(x7)
+af826360|	amoand.b x5,x6,(x7)
+af826364|	amoand.b.aq x5,x6,(x7)
+af826362|	amoand.b.rl x5,x6,(x7)
+af926360|	amoand.h x5,x6,(x7)
+af926364|	amoand.h.aq x5,x6,(x7)
+af926362|	amoand.h.rl x5,x6,(x7)
+af826328|	amocas.b x5,x6,(x7)
+af82632c|	amocas.b.aq x5,x6,(x7)
+af82632a|	amocas.b.rl x5,x6,(x7)
+af926328|	amocas.h x5,x6,(x7)
+af92632c|	amocas.h.aq x5,x6,(x7)
+af92632a|	amocas.h.rl x5,x6,(x7)
+af8263e0|	amomaxu.b x5,x6,(x7)
+af8263e4|	amomaxu.b.aq x5,x6,(x7)
+af8263e2|	amomaxu.b.rl x5,x6,(x7)
+af9263e0|	amomaxu.h x5,x6,(x7)
+af9263e4|	amomaxu.h.aq x5,x6,(x7)
+af9263e2|	amomaxu.h.rl x5,x6,(x7)
+af8263a0|	amomax.b x5,x6,(x7)
+af8263a4|	amomax.b.aq x5,x6,(x7)
+af8263a2|	amomax.b.rl x5,x6,(x7)
+af9263a0|	amomax.h x5,x6,(x7)
+af9263a4|	amomax.h.aq x5,x6,(x7)
+af9263a2|	amomax.h.rl x5,x6,(x7)
+af8263c0|	amominu.b x5,x6,(x7)
+af8263c4|	amominu.b.aq x5,x6,(x7)
+af8263c2|	amominu.b.rl x5,x6,(x7)
+af9263c0|	amominu.h x5,x6,(x7)
+af9263c4|	amominu.h.aq x5,x6,(x7)
+af9263c2|	amominu.h.rl x5,x6,(x7)
+af826380|	amomin.b x5,x6,(x7)
+af826384|	amomin.b.aq x5,x6,(x7)
+af826382|	amomin.b.rl x5,x6,(x7)
+af926380|	amomin.h x5,x6,(x7)
+af926384|	amomin.h.aq x5,x6,(x7)
+af926382|	amomin.h.rl x5,x6,(x7)
+af826340|	amoor.b x5,x6,(x7)
+af826344|	amoor.b.aq x5,x6,(x7)
+af826342|	amoor.b.rl x5,x6,(x7)
+af926340|	amoor.h x5,x6,(x7)
+af926344|	amoor.h.aq x5,x6,(x7)
+af926342|	amoor.h.rl x5,x6,(x7)
+af826308|	amoswap.b x5,x6,(x7)
+af82630c|	amoswap.b.aq x5,x6,(x7)
+af82630a|	amoswap.b.rl x5,x6,(x7)
+af926308|	amoswap.h x5,x6,(x7)
+af92630c|	amoswap.h.aq x5,x6,(x7)
+af92630a|	amoswap.h.rl x5,x6,(x7)
+af826320|	amoxor.b x5,x6,(x7)
+af826324|	amoxor.b.aq x5,x6,(x7)
+af826322|	amoxor.b.rl x5,x6,(x7)
+af926320|	amoxor.h x5,x6,(x7)
+af926324|	amoxor.h.aq x5,x6,(x7)
+af926322|	amoxor.h.rl x5,x6,(x7)
 
 # 19.6.1: Cache-Block Management Instructions (Zicbom), Version 1.0.0
 0fa01200|	cbo.clean	(x5)
@@ -432,10 +469,150 @@ b373530e|	czero.nez x7,x6,x5
 13e0121c|	prefetch.r 448(x5)
 13e0321c|	prefetch.w 448(x5)
 13e07200|	ori x0,x5,7
+
+# 24.: "Zfa" Extension for Additional Floating-Point Instructions, Version 1.0
+d30010f0|	fli.s f1,-0x1p+0
+d38010f0|	fli.s f1,min
+d30011f0|	fli.s f1,0x1p-16
+d38011f0|	fli.s f1,0x1p-15
+d30012f0|	fli.s f1,0x1p-8
+d38012f0|	fli.s f1,0x1p-7
+d30013f0|	fli.s f1,0x1p-4
+d38013f0|	fli.s f1,0x1p-3
+d30014f0|	fli.s f1,0x1p-2
+d38014f0|	fli.s f1,0x1.4p-2
+d30015f0|	fli.s f1,0x1.8p-2
+d38015f0|	fli.s f1,0x1.cp-2
+d30016f0|	fli.s f1,0x1p-1
+d38016f0|	fli.s f1,0x1.4p-1
+d30017f0|	fli.s f1,0x1.8p-1
+d38017f0|	fli.s f1,0x1.cp-1
+d30018f0|	fli.s f1,0x1p+0
+d38018f0|	fli.s f1,0x1.4p+0
+d30019f0|	fli.s f1,0x1.8p+0
+d38019f0|	fli.s f1,0x1.cp+0
+d3001af0|	fli.s f1,0x1p+1
+d3801af0|	fli.s f1,0x1.4p+1
+d3001bf0|	fli.s f1,0x1.8p+1
+d3801bf0|	fli.s f1,0x1p+2
+d3001cf0|	fli.s f1,0x1p+3
+d3801cf0|	fli.s f1,0x1p+4
+d3001df0|	fli.s f1,0x1p+7
+d3801df0|	fli.s f1,0x1p+8
+d3001ef0|	fli.s f1,0x1p+15
+d3801ef0|	fli.s f1,0x1p+16
+d3001ff0|	fli.s f1,inf
+d3801ff0|	fli.s f1,nan
+d30010f2|	fli.d f1,-0x1p+0
+d38010f2|	fli.d f1,min
+d30011f2|	fli.d f1,0x1p-16
+d38011f2|	fli.d f1,0x1p-15
+d30012f2|	fli.d f1,0x1p-8
+d38012f2|	fli.d f1,0x1p-7
+d30013f2|	fli.d f1,0x1p-4
+d38013f2|	fli.d f1,0x1p-3
+d30018f2|	fli.d f1,0x1p+0
+d3001af2|	fli.d f1,0x1p+1
+53a5c528|	fminm.s f10,f11,f12
+53a5c52a|	fminm.d f10,f11,f12
+d3395a29|	fmaxm.s f19,f20,f21
+d3395a2b|	fmaxm.d f19,f20,f21
+d3044940|	fround.s f9,f18,rne
+d3044942|	fround.d f9,f18,rne
+d3045940|	froundnx.s f9,f18,rne
+d3045942|	froundnx.d f9,f18,rne
+d39580c2|	fcvtmod.w.d x11,f1,rtz
+d3c520a0|	fleq.s x11,f1,f2
+d3c520a2|	fleq.d x11,f1,f2
+d3d524a1|	fltq.s x11,f9,f18
+d3d524a3|	fltq.d x11,f9,f18
+d3a3412c|	fminm.h f7,f3,f4
+d3a3412e|	fminm.q f7,f3,f4
+d3b3412c|	fmaxm.h f7,f3,f4
+d3b3412e|	fmaxm.q f7,f3,f4
+d38310f4|	fli.h f7,min
+d30318f4|	fli.h f7,0x1p+0
+d3831ff4|	fli.h f7,nan
+d38310f6|	fli.q f7,min
+d30318f6|	fli.q f7,0x1p+0
+d3831ff6|	fli.q f7,nan
+d3834144|	fround.h f7,f3,rne
+d3834146|	fround.q f7,f3,rne
+d3835144|	froundnx.h f7,f3,rne
+d3835146|	froundnx.q f7,f3,rne
+d38311e6|	fmvh.x.q x7,f3
+d38341b6|	fmvp.q.x f7,x3,x4
+
+# "Zc*" Extension for Code Size Reduction, Version 1.0.0
+
+# 27.8: "zcb" Extension
+6c81|	lbu	x11,3(x10)
+2c85|	lhu	x11,2(x10)
+6c85|	lh	x11,2(x10)
+2c89|	sb	x11,2(x10)
+2c8d|	sh	x11,2(x10)
+619d|	zext.b	x10,x10
+659d|	sext.b	x10,x10
+699d|	zext.h	x10,x10
+6d9d|	sext.h	x10,x10
+759d|	not	x10,x10
+4d9d|	mul	x10,x10,x11
+719d|	zext.w	x10,x10
+0125|	sext.w	x10,x10
+
+# "B" Extension for Bit Manipulation, Version 1.0.0
+
+# 28.4.1. Zba: Address generation
+bb003108|	add.uw x1,x2,x3
+33a26220|	sh1add x4,x5,x6
+bb239420|	sh1add.uw x7,x8,x9
+33c5c520|	sh2add x10,x11,x12
+bb46f720|	sh2add.uw x13,x14,x15
+33e82821|	sh3add x16,x17,x18
+bb695a21|	sh3add.uw x19,x20,x21
+1b9b7b09|	slli.uw x22,x23,0x17
+bb020308|	zext.w x5,x6
+
+# 28.4.2. Zbb: Basic bit-manipulation
+33fcac41|	andn x24,x25,x26
+b36dde41|	orn x27,x28,x29
+33cf1f40|	xnor x30,x31,x1
+13910160|	clz x2,x3
+1b920260|	clzw x4,x5
+13931360|	ctz x6,x7
+1b941460|	ctzw x8,x9
+13952560|	cpop x10,x11
+1b962660|	cpopw x12,x13
+33e7070b|	max x14,x15,x16
+b378390b|	maxu x17,x18,x19
+33ca6a0b|	min x20,x21,x22
+b35b9c0b|	minu x23,x24,x25
+139d4d60|	sext.b x26,x27
+139e5e60|	sext.h x28,x29
+3bcf0f08|	zext.h x30,x31
+b3102060|	rol x1,x0,x2
+bb115260|	rolw x3,x4,x5
+33d38360|	ror x6,x7,x8
+9354a560|	rori x9,x10,0xa
+9b55e660|	roriw x11,x12,0xe
+bb56f760|	rorw x13,x14,x15
+13d87828|	orc.b x16,x17
+13d9896b|	rev8 x18,x19
+
 # 28.4.3： Zbc: Carry-less multiplication
 b313530a|	clmul	x7,x6,x5
 b333530a|	clmulh	x7,x6,x5
 b323530a|	clmulr	x7,x6,x5
+
+# 28.4.4. Zbs: Single-bit instructions
+339a6a49|	bclr x20,x21,x22
+931bfc48|	bclri x23,x24,0xf
+b35cbd49|	bext x25,x26,x27
+13de8e48|	bexti x28,x29,0x8
+339f0f68|	binv x30,x31,x0
+9310016a|	binvi x1,x2,0x20
+b3115228|	bset x3,x4,x5
+1393f32b|	bseti x6,x7,0x3f
 
 # "V" Standard Extension for Vector Operations, Version 1.0
 
@@ -1781,6 +1958,8 @@ d730209e|	vmv1r.v v1,v2
 57b2819e|	vmv4r.v v4,v8
 57b0839e|	vmv8r.v v0,v8
 
+# 33. Cryptography Extensions: Vector Instructions, Version 1.0.0
+
 # 33.2.1. Zvbb - Vector Basic Bit-manipulation
 d7812006|	vandn.vv v3,v2,v1
 d7812004|	vandn.vv v3,v2,v1,v0.t
@@ -1825,11 +2004,11 @@ d7a12034|	vclmulh.vv v3,v2,v1,v0.t
 d7612536|	vclmulh.vx v3,v2,x10
 d7612534|	vclmulh.vx v3,v2,x10,v0.t
 
-# 32.2.4: Vector GCM/GMAC
+# 33.2.4. Zvkg - Vector GCM/GMAC
 f7a120b2|	vghsh.vv v3,v2,v1
 f7a128a2|	vgmul.vv v3,v2
 
-# 32.2.5: NIST Suite: Vector AES Block Cipher
+# 33.2.5. Zvkned - NIST Suite: Vector AES Block Cipher
 f7a120a2|	vaesdf.vv v3,v2
 f7a120a6|	vaesdf.vs v3,v2
 f72120a2|	vaesdm.vv v3,v2
@@ -1842,17 +2021,17 @@ f7a1208a|	vaeskf1.vi v3,v2,1
 f7a120aa|	vaeskf2.vi v3,v2,1
 f7a123a6|	vaesz.vs v3,v2
 
-# 32.2.6: NIST Suite: Vector SHA-2 Secure Hash
+# 33.2.6. Zvknh[ab] - NIST Suite: Vector SHA-2 Secure Hash
 f7a120ba|	vsha2ch.vv v3,v2,v1
 f7a120be|	vsha2cl.vv v3,v2,v1
 f7a120b6|	vsha2ms.vv v3,v2,v1
 
-# 32.2.7: ShangMi Suite: SM4 Block Cipher
+# 33.2.7. Zvksed - ShangMi Suite: SM4 Block Cipher
 f7a12086|	vsm4k.vi v3,v2,1
 f72128a2|	vsm4r.vv v3,v2
 f72128a6|	vsm4r.vs v3,v2
 
-# 32.2.8: ShangMi Suite: SM3 Secure Hash
+# 33.2.8. Zvksh - ShangMi Suite: SM3 Secure Hash
 f7a120ae|	vsm3c.vi v3,v2,1
 f7a12082|	vsm3me.vv v3,v2,v1
 

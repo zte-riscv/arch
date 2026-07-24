@@ -13,74 +13,154 @@ const (
 	ADDIW
 	ADDW
 	ADD_UW
+	AMOADD_B
+	AMOADD_B_AQ
+	AMOADD_B_AQRL
+	AMOADD_B_RL
 	AMOADD_D
 	AMOADD_D_AQ
 	AMOADD_D_AQRL
 	AMOADD_D_RL
+	AMOADD_H
+	AMOADD_H_AQ
+	AMOADD_H_AQRL
+	AMOADD_H_RL
 	AMOADD_W
 	AMOADD_W_AQ
 	AMOADD_W_AQRL
 	AMOADD_W_RL
+	AMOAND_B
+	AMOAND_B_AQ
+	AMOAND_B_AQRL
+	AMOAND_B_RL
 	AMOAND_D
 	AMOAND_D_AQ
 	AMOAND_D_AQRL
 	AMOAND_D_RL
+	AMOAND_H
+	AMOAND_H_AQ
+	AMOAND_H_AQRL
+	AMOAND_H_RL
 	AMOAND_W
 	AMOAND_W_AQ
 	AMOAND_W_AQRL
 	AMOAND_W_RL
+	AMOCAS_B
+	AMOCAS_B_AQ
+	AMOCAS_B_AQRL
+	AMOCAS_B_RL
+	AMOCAS_H
+	AMOCAS_H_AQ
+	AMOCAS_H_AQRL
+	AMOCAS_H_RL
+	AMOMAXU_B
+	AMOMAXU_B_AQ
+	AMOMAXU_B_AQRL
+	AMOMAXU_B_RL
 	AMOMAXU_D
 	AMOMAXU_D_AQ
 	AMOMAXU_D_AQRL
 	AMOMAXU_D_RL
+	AMOMAXU_H
+	AMOMAXU_H_AQ
+	AMOMAXU_H_AQRL
+	AMOMAXU_H_RL
 	AMOMAXU_W
 	AMOMAXU_W_AQ
 	AMOMAXU_W_AQRL
 	AMOMAXU_W_RL
+	AMOMAX_B
+	AMOMAX_B_AQ
+	AMOMAX_B_AQRL
+	AMOMAX_B_RL
 	AMOMAX_D
 	AMOMAX_D_AQ
 	AMOMAX_D_AQRL
 	AMOMAX_D_RL
+	AMOMAX_H
+	AMOMAX_H_AQ
+	AMOMAX_H_AQRL
+	AMOMAX_H_RL
 	AMOMAX_W
 	AMOMAX_W_AQ
 	AMOMAX_W_AQRL
 	AMOMAX_W_RL
+	AMOMINU_B
+	AMOMINU_B_AQ
+	AMOMINU_B_AQRL
+	AMOMINU_B_RL
 	AMOMINU_D
 	AMOMINU_D_AQ
 	AMOMINU_D_AQRL
 	AMOMINU_D_RL
+	AMOMINU_H
+	AMOMINU_H_AQ
+	AMOMINU_H_AQRL
+	AMOMINU_H_RL
 	AMOMINU_W
 	AMOMINU_W_AQ
 	AMOMINU_W_AQRL
 	AMOMINU_W_RL
+	AMOMIN_B
+	AMOMIN_B_AQ
+	AMOMIN_B_AQRL
+	AMOMIN_B_RL
 	AMOMIN_D
 	AMOMIN_D_AQ
 	AMOMIN_D_AQRL
 	AMOMIN_D_RL
+	AMOMIN_H
+	AMOMIN_H_AQ
+	AMOMIN_H_AQRL
+	AMOMIN_H_RL
 	AMOMIN_W
 	AMOMIN_W_AQ
 	AMOMIN_W_AQRL
 	AMOMIN_W_RL
+	AMOOR_B
+	AMOOR_B_AQ
+	AMOOR_B_AQRL
+	AMOOR_B_RL
 	AMOOR_D
 	AMOOR_D_AQ
 	AMOOR_D_AQRL
 	AMOOR_D_RL
+	AMOOR_H
+	AMOOR_H_AQ
+	AMOOR_H_AQRL
+	AMOOR_H_RL
 	AMOOR_W
 	AMOOR_W_AQ
 	AMOOR_W_AQRL
 	AMOOR_W_RL
+	AMOSWAP_B
+	AMOSWAP_B_AQ
+	AMOSWAP_B_AQRL
+	AMOSWAP_B_RL
 	AMOSWAP_D
 	AMOSWAP_D_AQ
 	AMOSWAP_D_AQRL
 	AMOSWAP_D_RL
+	AMOSWAP_H
+	AMOSWAP_H_AQ
+	AMOSWAP_H_AQRL
+	AMOSWAP_H_RL
 	AMOSWAP_W
 	AMOSWAP_W_AQ
 	AMOSWAP_W_AQRL
 	AMOSWAP_W_RL
+	AMOXOR_B
+	AMOXOR_B_AQ
+	AMOXOR_B_AQRL
+	AMOXOR_B_RL
 	AMOXOR_D
 	AMOXOR_D_AQ
 	AMOXOR_D_AQRL
 	AMOXOR_D_RL
+	AMOXOR_H
+	AMOXOR_H_AQ
+	AMOXOR_H_AQRL
+	AMOXOR_H_RL
 	AMOXOR_W
 	AMOXOR_W_AQ
 	AMOXOR_W_AQRL
@@ -142,17 +222,26 @@ const (
 	C_J
 	C_JALR
 	C_JR
+	C_LBU
 	C_LD
 	C_LDSP
+	C_LH
+	C_LHU
 	C_LI
 	C_LUI
 	C_LW
 	C_LWSP
+	C_MUL
 	C_MV
 	C_NOP
+	C_NOT
 	C_OR
+	C_SB
 	C_SD
 	C_SDSP
+	C_SEXT_B
+	C_SEXT_H
+	C_SH
 	C_SLLI
 	C_SRAI
 	C_SRLI
@@ -162,6 +251,9 @@ const (
 	C_SWSP
 	C_UNIMP
 	C_XOR
+	C_ZEXT_B
+	C_ZEXT_H
+	C_ZEXT_W
 	DIV
 	DIVU
 	DIVUW
@@ -176,6 +268,7 @@ const (
 	FCLASS_H
 	FCLASS_Q
 	FCLASS_S
+	FCVTMOD_W_D
 	FCVT_D_L
 	FCVT_D_LU
 	FCVT_D_Q
@@ -227,12 +320,24 @@ const (
 	FEQ_Q
 	FEQ_S
 	FLD
+	FLEQ_D
+	FLEQ_H
+	FLEQ_Q
+	FLEQ_S
 	FLE_D
 	FLE_H
 	FLE_Q
 	FLE_S
 	FLH
+	FLI_D
+	FLI_H
+	FLI_Q
+	FLI_S
 	FLQ
+	FLTQ_D
+	FLTQ_H
+	FLTQ_Q
+	FLTQ_S
 	FLT_D
 	FLT_H
 	FLT_Q
@@ -242,10 +347,18 @@ const (
 	FMADD_H
 	FMADD_Q
 	FMADD_S
+	FMAXM_D
+	FMAXM_H
+	FMAXM_Q
+	FMAXM_S
 	FMAX_D
 	FMAX_H
 	FMAX_Q
 	FMAX_S
+	FMINM_D
+	FMINM_H
+	FMINM_Q
+	FMINM_S
 	FMIN_D
 	FMIN_H
 	FMIN_Q
@@ -258,6 +371,8 @@ const (
 	FMUL_H
 	FMUL_Q
 	FMUL_S
+	FMVH_X_Q
+	FMVP_Q_X
 	FMV_D_X
 	FMV_H_X
 	FMV_W_X
@@ -272,6 +387,14 @@ const (
 	FNMSUB_H
 	FNMSUB_Q
 	FNMSUB_S
+	FROUNDNX_D
+	FROUNDNX_H
+	FROUNDNX_Q
+	FROUNDNX_S
+	FROUND_D
+	FROUND_H
+	FROUND_Q
+	FROUND_S
 	FSD
 	FSGNJN_D
 	FSGNJN_H
@@ -1045,6 +1168,8 @@ const (
 	VZEXT_VF2
 	VZEXT_VF4
 	VZEXT_VF8
+	WRS_NTO
+	WRS_STO
 	XNOR
 	XOR
 	XORI
@@ -1057,74 +1182,154 @@ var opstr = [...]string{
 	ADDIW:             "ADDIW",
 	ADDW:              "ADDW",
 	ADD_UW:            "ADD.UW",
+	AMOADD_B:          "AMOADD.B",
+	AMOADD_B_AQ:       "AMOADD.B.AQ",
+	AMOADD_B_AQRL:     "AMOADD.B.AQRL",
+	AMOADD_B_RL:       "AMOADD.B.RL",
 	AMOADD_D:          "AMOADD.D",
 	AMOADD_D_AQ:       "AMOADD.D.AQ",
 	AMOADD_D_AQRL:     "AMOADD.D.AQRL",
 	AMOADD_D_RL:       "AMOADD.D.RL",
+	AMOADD_H:          "AMOADD.H",
+	AMOADD_H_AQ:       "AMOADD.H.AQ",
+	AMOADD_H_AQRL:     "AMOADD.H.AQRL",
+	AMOADD_H_RL:       "AMOADD.H.RL",
 	AMOADD_W:          "AMOADD.W",
 	AMOADD_W_AQ:       "AMOADD.W.AQ",
 	AMOADD_W_AQRL:     "AMOADD.W.AQRL",
 	AMOADD_W_RL:       "AMOADD.W.RL",
+	AMOAND_B:          "AMOAND.B",
+	AMOAND_B_AQ:       "AMOAND.B.AQ",
+	AMOAND_B_AQRL:     "AMOAND.B.AQRL",
+	AMOAND_B_RL:       "AMOAND.B.RL",
 	AMOAND_D:          "AMOAND.D",
 	AMOAND_D_AQ:       "AMOAND.D.AQ",
 	AMOAND_D_AQRL:     "AMOAND.D.AQRL",
 	AMOAND_D_RL:       "AMOAND.D.RL",
+	AMOAND_H:          "AMOAND.H",
+	AMOAND_H_AQ:       "AMOAND.H.AQ",
+	AMOAND_H_AQRL:     "AMOAND.H.AQRL",
+	AMOAND_H_RL:       "AMOAND.H.RL",
 	AMOAND_W:          "AMOAND.W",
 	AMOAND_W_AQ:       "AMOAND.W.AQ",
 	AMOAND_W_AQRL:     "AMOAND.W.AQRL",
 	AMOAND_W_RL:       "AMOAND.W.RL",
+	AMOCAS_B:          "AMOCAS.B",
+	AMOCAS_B_AQ:       "AMOCAS.B.AQ",
+	AMOCAS_B_AQRL:     "AMOCAS.B.AQRL",
+	AMOCAS_B_RL:       "AMOCAS.B.RL",
+	AMOCAS_H:          "AMOCAS.H",
+	AMOCAS_H_AQ:       "AMOCAS.H.AQ",
+	AMOCAS_H_AQRL:     "AMOCAS.H.AQRL",
+	AMOCAS_H_RL:       "AMOCAS.H.RL",
+	AMOMAXU_B:         "AMOMAXU.B",
+	AMOMAXU_B_AQ:      "AMOMAXU.B.AQ",
+	AMOMAXU_B_AQRL:    "AMOMAXU.B.AQRL",
+	AMOMAXU_B_RL:      "AMOMAXU.B.RL",
 	AMOMAXU_D:         "AMOMAXU.D",
 	AMOMAXU_D_AQ:      "AMOMAXU.D.AQ",
 	AMOMAXU_D_AQRL:    "AMOMAXU.D.AQRL",
 	AMOMAXU_D_RL:      "AMOMAXU.D.RL",
+	AMOMAXU_H:         "AMOMAXU.H",
+	AMOMAXU_H_AQ:      "AMOMAXU.H.AQ",
+	AMOMAXU_H_AQRL:    "AMOMAXU.H.AQRL",
+	AMOMAXU_H_RL:      "AMOMAXU.H.RL",
 	AMOMAXU_W:         "AMOMAXU.W",
 	AMOMAXU_W_AQ:      "AMOMAXU.W.AQ",
 	AMOMAXU_W_AQRL:    "AMOMAXU.W.AQRL",
 	AMOMAXU_W_RL:      "AMOMAXU.W.RL",
+	AMOMAX_B:          "AMOMAX.B",
+	AMOMAX_B_AQ:       "AMOMAX.B.AQ",
+	AMOMAX_B_AQRL:     "AMOMAX.B.AQRL",
+	AMOMAX_B_RL:       "AMOMAX.B.RL",
 	AMOMAX_D:          "AMOMAX.D",
 	AMOMAX_D_AQ:       "AMOMAX.D.AQ",
 	AMOMAX_D_AQRL:     "AMOMAX.D.AQRL",
 	AMOMAX_D_RL:       "AMOMAX.D.RL",
+	AMOMAX_H:          "AMOMAX.H",
+	AMOMAX_H_AQ:       "AMOMAX.H.AQ",
+	AMOMAX_H_AQRL:     "AMOMAX.H.AQRL",
+	AMOMAX_H_RL:       "AMOMAX.H.RL",
 	AMOMAX_W:          "AMOMAX.W",
 	AMOMAX_W_AQ:       "AMOMAX.W.AQ",
 	AMOMAX_W_AQRL:     "AMOMAX.W.AQRL",
 	AMOMAX_W_RL:       "AMOMAX.W.RL",
+	AMOMINU_B:         "AMOMINU.B",
+	AMOMINU_B_AQ:      "AMOMINU.B.AQ",
+	AMOMINU_B_AQRL:    "AMOMINU.B.AQRL",
+	AMOMINU_B_RL:      "AMOMINU.B.RL",
 	AMOMINU_D:         "AMOMINU.D",
 	AMOMINU_D_AQ:      "AMOMINU.D.AQ",
 	AMOMINU_D_AQRL:    "AMOMINU.D.AQRL",
 	AMOMINU_D_RL:      "AMOMINU.D.RL",
+	AMOMINU_H:         "AMOMINU.H",
+	AMOMINU_H_AQ:      "AMOMINU.H.AQ",
+	AMOMINU_H_AQRL:    "AMOMINU.H.AQRL",
+	AMOMINU_H_RL:      "AMOMINU.H.RL",
 	AMOMINU_W:         "AMOMINU.W",
 	AMOMINU_W_AQ:      "AMOMINU.W.AQ",
 	AMOMINU_W_AQRL:    "AMOMINU.W.AQRL",
 	AMOMINU_W_RL:      "AMOMINU.W.RL",
+	AMOMIN_B:          "AMOMIN.B",
+	AMOMIN_B_AQ:       "AMOMIN.B.AQ",
+	AMOMIN_B_AQRL:     "AMOMIN.B.AQRL",
+	AMOMIN_B_RL:       "AMOMIN.B.RL",
 	AMOMIN_D:          "AMOMIN.D",
 	AMOMIN_D_AQ:       "AMOMIN.D.AQ",
 	AMOMIN_D_AQRL:     "AMOMIN.D.AQRL",
 	AMOMIN_D_RL:       "AMOMIN.D.RL",
+	AMOMIN_H:          "AMOMIN.H",
+	AMOMIN_H_AQ:       "AMOMIN.H.AQ",
+	AMOMIN_H_AQRL:     "AMOMIN.H.AQRL",
+	AMOMIN_H_RL:       "AMOMIN.H.RL",
 	AMOMIN_W:          "AMOMIN.W",
 	AMOMIN_W_AQ:       "AMOMIN.W.AQ",
 	AMOMIN_W_AQRL:     "AMOMIN.W.AQRL",
 	AMOMIN_W_RL:       "AMOMIN.W.RL",
+	AMOOR_B:           "AMOOR.B",
+	AMOOR_B_AQ:        "AMOOR.B.AQ",
+	AMOOR_B_AQRL:      "AMOOR.B.AQRL",
+	AMOOR_B_RL:        "AMOOR.B.RL",
 	AMOOR_D:           "AMOOR.D",
 	AMOOR_D_AQ:        "AMOOR.D.AQ",
 	AMOOR_D_AQRL:      "AMOOR.D.AQRL",
 	AMOOR_D_RL:        "AMOOR.D.RL",
+	AMOOR_H:           "AMOOR.H",
+	AMOOR_H_AQ:        "AMOOR.H.AQ",
+	AMOOR_H_AQRL:      "AMOOR.H.AQRL",
+	AMOOR_H_RL:        "AMOOR.H.RL",
 	AMOOR_W:           "AMOOR.W",
 	AMOOR_W_AQ:        "AMOOR.W.AQ",
 	AMOOR_W_AQRL:      "AMOOR.W.AQRL",
 	AMOOR_W_RL:        "AMOOR.W.RL",
+	AMOSWAP_B:         "AMOSWAP.B",
+	AMOSWAP_B_AQ:      "AMOSWAP.B.AQ",
+	AMOSWAP_B_AQRL:    "AMOSWAP.B.AQRL",
+	AMOSWAP_B_RL:      "AMOSWAP.B.RL",
 	AMOSWAP_D:         "AMOSWAP.D",
 	AMOSWAP_D_AQ:      "AMOSWAP.D.AQ",
 	AMOSWAP_D_AQRL:    "AMOSWAP.D.AQRL",
 	AMOSWAP_D_RL:      "AMOSWAP.D.RL",
+	AMOSWAP_H:         "AMOSWAP.H",
+	AMOSWAP_H_AQ:      "AMOSWAP.H.AQ",
+	AMOSWAP_H_AQRL:    "AMOSWAP.H.AQRL",
+	AMOSWAP_H_RL:      "AMOSWAP.H.RL",
 	AMOSWAP_W:         "AMOSWAP.W",
 	AMOSWAP_W_AQ:      "AMOSWAP.W.AQ",
 	AMOSWAP_W_AQRL:    "AMOSWAP.W.AQRL",
 	AMOSWAP_W_RL:      "AMOSWAP.W.RL",
+	AMOXOR_B:          "AMOXOR.B",
+	AMOXOR_B_AQ:       "AMOXOR.B.AQ",
+	AMOXOR_B_AQRL:     "AMOXOR.B.AQRL",
+	AMOXOR_B_RL:       "AMOXOR.B.RL",
 	AMOXOR_D:          "AMOXOR.D",
 	AMOXOR_D_AQ:       "AMOXOR.D.AQ",
 	AMOXOR_D_AQRL:     "AMOXOR.D.AQRL",
 	AMOXOR_D_RL:       "AMOXOR.D.RL",
+	AMOXOR_H:          "AMOXOR.H",
+	AMOXOR_H_AQ:       "AMOXOR.H.AQ",
+	AMOXOR_H_AQRL:     "AMOXOR.H.AQRL",
+	AMOXOR_H_RL:       "AMOXOR.H.RL",
 	AMOXOR_W:          "AMOXOR.W",
 	AMOXOR_W_AQ:       "AMOXOR.W.AQ",
 	AMOXOR_W_AQRL:     "AMOXOR.W.AQRL",
@@ -1186,17 +1391,26 @@ var opstr = [...]string{
 	C_J:               "C.J",
 	C_JALR:            "C.JALR",
 	C_JR:              "C.JR",
+	C_LBU:             "C.LBU",
 	C_LD:              "C.LD",
 	C_LDSP:            "C.LDSP",
+	C_LH:              "C.LH",
+	C_LHU:             "C.LHU",
 	C_LI:              "C.LI",
 	C_LUI:             "C.LUI",
 	C_LW:              "C.LW",
 	C_LWSP:            "C.LWSP",
+	C_MUL:             "C.MUL",
 	C_MV:              "C.MV",
 	C_NOP:             "C.NOP",
+	C_NOT:             "C.NOT",
 	C_OR:              "C.OR",
+	C_SB:              "C.SB",
 	C_SD:              "C.SD",
 	C_SDSP:            "C.SDSP",
+	C_SEXT_B:          "C.SEXT.B",
+	C_SEXT_H:          "C.SEXT.H",
+	C_SH:              "C.SH",
 	C_SLLI:            "C.SLLI",
 	C_SRAI:            "C.SRAI",
 	C_SRLI:            "C.SRLI",
@@ -1206,6 +1420,9 @@ var opstr = [...]string{
 	C_SWSP:            "C.SWSP",
 	C_UNIMP:           "C.UNIMP",
 	C_XOR:             "C.XOR",
+	C_ZEXT_B:          "C.ZEXT.B",
+	C_ZEXT_H:          "C.ZEXT.H",
+	C_ZEXT_W:          "C.ZEXT.W",
 	DIV:               "DIV",
 	DIVU:              "DIVU",
 	DIVUW:             "DIVUW",
@@ -1220,6 +1437,7 @@ var opstr = [...]string{
 	FCLASS_H:          "FCLASS.H",
 	FCLASS_Q:          "FCLASS.Q",
 	FCLASS_S:          "FCLASS.S",
+	FCVTMOD_W_D:       "FCVTMOD.W.D",
 	FCVT_D_L:          "FCVT.D.L",
 	FCVT_D_LU:         "FCVT.D.LU",
 	FCVT_D_Q:          "FCVT.D.Q",
@@ -1271,12 +1489,24 @@ var opstr = [...]string{
 	FEQ_Q:             "FEQ.Q",
 	FEQ_S:             "FEQ.S",
 	FLD:               "FLD",
+	FLEQ_D:            "FLEQ.D",
+	FLEQ_H:            "FLEQ.H",
+	FLEQ_Q:            "FLEQ.Q",
+	FLEQ_S:            "FLEQ.S",
 	FLE_D:             "FLE.D",
 	FLE_H:             "FLE.H",
 	FLE_Q:             "FLE.Q",
 	FLE_S:             "FLE.S",
 	FLH:               "FLH",
+	FLI_D:             "FLI.D",
+	FLI_H:             "FLI.H",
+	FLI_Q:             "FLI.Q",
+	FLI_S:             "FLI.S",
 	FLQ:               "FLQ",
+	FLTQ_D:            "FLTQ.D",
+	FLTQ_H:            "FLTQ.H",
+	FLTQ_Q:            "FLTQ.Q",
+	FLTQ_S:            "FLTQ.S",
 	FLT_D:             "FLT.D",
 	FLT_H:             "FLT.H",
 	FLT_Q:             "FLT.Q",
@@ -1286,10 +1516,18 @@ var opstr = [...]string{
 	FMADD_H:           "FMADD.H",
 	FMADD_Q:           "FMADD.Q",
 	FMADD_S:           "FMADD.S",
+	FMAXM_D:           "FMAXM.D",
+	FMAXM_H:           "FMAXM.H",
+	FMAXM_Q:           "FMAXM.Q",
+	FMAXM_S:           "FMAXM.S",
 	FMAX_D:            "FMAX.D",
 	FMAX_H:            "FMAX.H",
 	FMAX_Q:            "FMAX.Q",
 	FMAX_S:            "FMAX.S",
+	FMINM_D:           "FMINM.D",
+	FMINM_H:           "FMINM.H",
+	FMINM_Q:           "FMINM.Q",
+	FMINM_S:           "FMINM.S",
 	FMIN_D:            "FMIN.D",
 	FMIN_H:            "FMIN.H",
 	FMIN_Q:            "FMIN.Q",
@@ -1302,6 +1540,8 @@ var opstr = [...]string{
 	FMUL_H:            "FMUL.H",
 	FMUL_Q:            "FMUL.Q",
 	FMUL_S:            "FMUL.S",
+	FMVH_X_Q:          "FMVH.X.Q",
+	FMVP_Q_X:          "FMVP.Q.X",
 	FMV_D_X:           "FMV.D.X",
 	FMV_H_X:           "FMV.H.X",
 	FMV_W_X:           "FMV.W.X",
@@ -1316,6 +1556,14 @@ var opstr = [...]string{
 	FNMSUB_H:          "FNMSUB.H",
 	FNMSUB_Q:          "FNMSUB.Q",
 	FNMSUB_S:          "FNMSUB.S",
+	FROUNDNX_D:        "FROUNDNX.D",
+	FROUNDNX_H:        "FROUNDNX.H",
+	FROUNDNX_Q:        "FROUNDNX.Q",
+	FROUNDNX_S:        "FROUNDNX.S",
+	FROUND_D:          "FROUND.D",
+	FROUND_H:          "FROUND.H",
+	FROUND_Q:          "FROUND.Q",
+	FROUND_S:          "FROUND.S",
 	FSD:               "FSD",
 	FSGNJN_D:          "FSGNJN.D",
 	FSGNJN_H:          "FSGNJN.H",
@@ -2089,6 +2337,8 @@ var opstr = [...]string{
 	VZEXT_VF2:         "VZEXT.VF2",
 	VZEXT_VF4:         "VZEXT.VF4",
 	VZEXT_VF8:         "VZEXT.VF8",
+	WRS_NTO:           "WRS.NTO",
+	WRS_STO:           "WRS.STO",
 	XNOR:              "XNOR",
 	XOR:               "XOR",
 	XORI:              "XORI",
@@ -2106,6 +2356,14 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0x0000003b, op: ADDW, args: argTypeList{arg_rd, arg_rs1, arg_rs2}},
 	// ADD.UW rd, rs1, rs2
 	{mask: 0xfe00707f, value: 0x0800003b, op: ADD_UW, args: argTypeList{arg_rd, arg_rs1, arg_rs2}},
+	// AMOADD.B rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x0000002f, op: AMOADD_B, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOADD.B.AQ rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x0400002f, op: AMOADD_B_AQ, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOADD.B.AQRL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x0600002f, op: AMOADD_B_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOADD.B.RL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x0200002f, op: AMOADD_B_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOADD.D rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x0000302f, op: AMOADD_D, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOADD.D.AQ rd, rs2, rs1_ptr
@@ -2114,6 +2372,14 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0x0600302f, op: AMOADD_D_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOADD.D.RL rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x0200302f, op: AMOADD_D_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOADD.H rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x0000102f, op: AMOADD_H, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOADD.H.AQ rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x0400102f, op: AMOADD_H_AQ, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOADD.H.AQRL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x0600102f, op: AMOADD_H_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOADD.H.RL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x0200102f, op: AMOADD_H_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOADD.W rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x0000202f, op: AMOADD_W, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOADD.W.AQ rd, rs2, rs1_ptr
@@ -2122,6 +2388,14 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0x0600202f, op: AMOADD_W_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOADD.W.RL rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x0200202f, op: AMOADD_W_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOAND.B rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x6000002f, op: AMOAND_B, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOAND.B.AQ rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x6400002f, op: AMOAND_B_AQ, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOAND.B.AQRL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x6600002f, op: AMOAND_B_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOAND.B.RL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x6200002f, op: AMOAND_B_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOAND.D rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x6000302f, op: AMOAND_D, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOAND.D.AQ rd, rs2, rs1_ptr
@@ -2130,6 +2404,14 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0x6600302f, op: AMOAND_D_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOAND.D.RL rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x6200302f, op: AMOAND_D_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOAND.H rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x6000102f, op: AMOAND_H, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOAND.H.AQ rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x6400102f, op: AMOAND_H_AQ, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOAND.H.AQRL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x6600102f, op: AMOAND_H_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOAND.H.RL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x6200102f, op: AMOAND_H_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOAND.W rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x6000202f, op: AMOAND_W, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOAND.W.AQ rd, rs2, rs1_ptr
@@ -2138,6 +2420,30 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0x6600202f, op: AMOAND_W_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOAND.W.RL rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x6200202f, op: AMOAND_W_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOCAS.B rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x2800002f, op: AMOCAS_B, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOCAS.B.AQ rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x2c00002f, op: AMOCAS_B_AQ, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOCAS.B.AQRL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x2e00002f, op: AMOCAS_B_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOCAS.B.RL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x2a00002f, op: AMOCAS_B_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOCAS.H rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x2800102f, op: AMOCAS_H, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOCAS.H.AQ rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x2c00102f, op: AMOCAS_H_AQ, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOCAS.H.AQRL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x2e00102f, op: AMOCAS_H_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOCAS.H.RL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x2a00102f, op: AMOCAS_H_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMAXU.B rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xe000002f, op: AMOMAXU_B, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMAXU.B.AQ rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xe400002f, op: AMOMAXU_B_AQ, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMAXU.B.AQRL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xe600002f, op: AMOMAXU_B_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMAXU.B.RL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xe200002f, op: AMOMAXU_B_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMAXU.D rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0xe000302f, op: AMOMAXU_D, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMAXU.D.AQ rd, rs2, rs1_ptr
@@ -2146,6 +2452,14 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0xe600302f, op: AMOMAXU_D_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMAXU.D.RL rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0xe200302f, op: AMOMAXU_D_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMAXU.H rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xe000102f, op: AMOMAXU_H, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMAXU.H.AQ rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xe400102f, op: AMOMAXU_H_AQ, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMAXU.H.AQRL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xe600102f, op: AMOMAXU_H_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMAXU.H.RL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xe200102f, op: AMOMAXU_H_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMAXU.W rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0xe000202f, op: AMOMAXU_W, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMAXU.W.AQ rd, rs2, rs1_ptr
@@ -2154,6 +2468,14 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0xe600202f, op: AMOMAXU_W_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMAXU.W.RL rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0xe200202f, op: AMOMAXU_W_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMAX.B rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xa000002f, op: AMOMAX_B, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMAX.B.AQ rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xa400002f, op: AMOMAX_B_AQ, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMAX.B.AQRL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xa600002f, op: AMOMAX_B_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMAX.B.RL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xa200002f, op: AMOMAX_B_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMAX.D rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0xa000302f, op: AMOMAX_D, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMAX.D.AQ rd, rs2, rs1_ptr
@@ -2162,6 +2484,14 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0xa600302f, op: AMOMAX_D_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMAX.D.RL rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0xa200302f, op: AMOMAX_D_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMAX.H rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xa000102f, op: AMOMAX_H, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMAX.H.AQ rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xa400102f, op: AMOMAX_H_AQ, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMAX.H.AQRL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xa600102f, op: AMOMAX_H_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMAX.H.RL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xa200102f, op: AMOMAX_H_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMAX.W rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0xa000202f, op: AMOMAX_W, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMAX.W.AQ rd, rs2, rs1_ptr
@@ -2170,6 +2500,14 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0xa600202f, op: AMOMAX_W_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMAX.W.RL rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0xa200202f, op: AMOMAX_W_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMINU.B rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xc000002f, op: AMOMINU_B, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMINU.B.AQ rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xc400002f, op: AMOMINU_B_AQ, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMINU.B.AQRL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xc600002f, op: AMOMINU_B_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMINU.B.RL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xc200002f, op: AMOMINU_B_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMINU.D rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0xc000302f, op: AMOMINU_D, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMINU.D.AQ rd, rs2, rs1_ptr
@@ -2178,6 +2516,14 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0xc600302f, op: AMOMINU_D_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMINU.D.RL rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0xc200302f, op: AMOMINU_D_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMINU.H rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xc000102f, op: AMOMINU_H, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMINU.H.AQ rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xc400102f, op: AMOMINU_H_AQ, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMINU.H.AQRL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xc600102f, op: AMOMINU_H_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMINU.H.RL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0xc200102f, op: AMOMINU_H_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMINU.W rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0xc000202f, op: AMOMINU_W, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMINU.W.AQ rd, rs2, rs1_ptr
@@ -2186,6 +2532,14 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0xc600202f, op: AMOMINU_W_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMINU.W.RL rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0xc200202f, op: AMOMINU_W_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMIN.B rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x8000002f, op: AMOMIN_B, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMIN.B.AQ rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x8400002f, op: AMOMIN_B_AQ, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMIN.B.AQRL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x8600002f, op: AMOMIN_B_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMIN.B.RL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x8200002f, op: AMOMIN_B_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMIN.D rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x8000302f, op: AMOMIN_D, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMIN.D.AQ rd, rs2, rs1_ptr
@@ -2194,6 +2548,14 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0x8600302f, op: AMOMIN_D_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMIN.D.RL rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x8200302f, op: AMOMIN_D_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMIN.H rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x8000102f, op: AMOMIN_H, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMIN.H.AQ rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x8400102f, op: AMOMIN_H_AQ, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMIN.H.AQRL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x8600102f, op: AMOMIN_H_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOMIN.H.RL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x8200102f, op: AMOMIN_H_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMIN.W rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x8000202f, op: AMOMIN_W, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMIN.W.AQ rd, rs2, rs1_ptr
@@ -2202,6 +2564,14 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0x8600202f, op: AMOMIN_W_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOMIN.W.RL rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x8200202f, op: AMOMIN_W_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOOR.B rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x4000002f, op: AMOOR_B, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOOR.B.AQ rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x4400002f, op: AMOOR_B_AQ, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOOR.B.AQRL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x4600002f, op: AMOOR_B_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOOR.B.RL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x4200002f, op: AMOOR_B_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOOR.D rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x4000302f, op: AMOOR_D, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOOR.D.AQ rd, rs2, rs1_ptr
@@ -2210,6 +2580,14 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0x4600302f, op: AMOOR_D_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOOR.D.RL rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x4200302f, op: AMOOR_D_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOOR.H rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x4000102f, op: AMOOR_H, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOOR.H.AQ rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x4400102f, op: AMOOR_H_AQ, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOOR.H.AQRL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x4600102f, op: AMOOR_H_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOOR.H.RL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x4200102f, op: AMOOR_H_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOOR.W rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x4000202f, op: AMOOR_W, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOOR.W.AQ rd, rs2, rs1_ptr
@@ -2218,6 +2596,14 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0x4600202f, op: AMOOR_W_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOOR.W.RL rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x4200202f, op: AMOOR_W_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOSWAP.B rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x0800002f, op: AMOSWAP_B, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOSWAP.B.AQ rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x0c00002f, op: AMOSWAP_B_AQ, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOSWAP.B.AQRL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x0e00002f, op: AMOSWAP_B_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOSWAP.B.RL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x0a00002f, op: AMOSWAP_B_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOSWAP.D rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x0800302f, op: AMOSWAP_D, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOSWAP.D.AQ rd, rs2, rs1_ptr
@@ -2226,6 +2612,14 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0x0e00302f, op: AMOSWAP_D_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOSWAP.D.RL rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x0a00302f, op: AMOSWAP_D_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOSWAP.H rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x0800102f, op: AMOSWAP_H, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOSWAP.H.AQ rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x0c00102f, op: AMOSWAP_H_AQ, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOSWAP.H.AQRL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x0e00102f, op: AMOSWAP_H_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOSWAP.H.RL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x0a00102f, op: AMOSWAP_H_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOSWAP.W rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x0800202f, op: AMOSWAP_W, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOSWAP.W.AQ rd, rs2, rs1_ptr
@@ -2234,6 +2628,14 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0x0e00202f, op: AMOSWAP_W_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOSWAP.W.RL rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x0a00202f, op: AMOSWAP_W_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOXOR.B rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x2000002f, op: AMOXOR_B, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOXOR.B.AQ rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x2400002f, op: AMOXOR_B_AQ, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOXOR.B.AQRL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x2600002f, op: AMOXOR_B_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOXOR.B.RL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x2200002f, op: AMOXOR_B_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOXOR.D rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x2000302f, op: AMOXOR_D, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOXOR.D.AQ rd, rs2, rs1_ptr
@@ -2242,6 +2644,14 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0x2600302f, op: AMOXOR_D_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOXOR.D.RL rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x2200302f, op: AMOXOR_D_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOXOR.H rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x2000102f, op: AMOXOR_H, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOXOR.H.AQ rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x2400102f, op: AMOXOR_H_AQ, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOXOR.H.AQRL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x2600102f, op: AMOXOR_H_AQRL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
+	// AMOXOR.H.RL rd, rs2, rs1_ptr
+	{mask: 0xfe00707f, value: 0x2200102f, op: AMOXOR_H_RL, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOXOR.W rd, rs2, rs1_ptr
 	{mask: 0xfe00707f, value: 0x2000202f, op: AMOXOR_W, args: argTypeList{arg_rd, arg_rs2, arg_rs1_ptr}},
 	// AMOXOR.W.AQ rd, rs2, rs1_ptr
@@ -2364,10 +2774,16 @@ var instFormats = [...]instFormat{
 	{mask: 0x0000f07f, value: 0x00009002, op: C_JALR, args: argTypeList{arg_c_rs1_n0}},
 	// C.JR rs1_n0
 	{mask: 0x0000f07f, value: 0x00008002, op: C_JR, args: argTypeList{arg_rs1_n0}},
+	// C.LBU rd_p, rs1_p, c_uimm2
+	{mask: 0x0000fc03, value: 0x00008000, op: C_LBU, args: argTypeList{arg_rd_p, arg_rs1_p, arg_c_uimm2}},
 	// C.LD rd_p, rs1_p, c_uimm8
 	{mask: 0x0000e003, value: 0x00006000, op: C_LD, args: argTypeList{arg_rd_p, arg_rs1_p, arg_c_uimm8}},
 	// C.LDSP rd_n0, c_uimm9sp
 	{mask: 0x0000e003, value: 0x00006002, op: C_LDSP, args: argTypeList{arg_rd_n0, arg_c_uimm9sp}},
+	// C.LH rd_p, rs1_p, c_uimm1
+	{mask: 0x0000fc43, value: 0x00008440, op: C_LH, args: argTypeList{arg_rd_p, arg_rs1_p, arg_c_uimm1}},
+	// C.LHU rd_p, rs1_p, c_uimm1
+	{mask: 0x0000fc43, value: 0x00008400, op: C_LHU, args: argTypeList{arg_rd_p, arg_rs1_p, arg_c_uimm1}},
 	// C.LI rd_n0, c_imm6
 	{mask: 0x0000e003, value: 0x00004001, op: C_LI, args: argTypeList{arg_rd_n0, arg_c_imm6}},
 	// C.LUI rd_n2, c_nzimm18
@@ -2376,16 +2792,28 @@ var instFormats = [...]instFormat{
 	{mask: 0x0000e003, value: 0x00004000, op: C_LW, args: argTypeList{arg_rd_p, arg_rs1_p, arg_c_uimm7}},
 	// C.LWSP rd_n0, c_uimm8sp
 	{mask: 0x0000e003, value: 0x00004002, op: C_LWSP, args: argTypeList{arg_rd_n0, arg_c_uimm8sp}},
+	// C.MUL rd_rs1_p, rs2_p
+	{mask: 0x0000fc63, value: 0x00009c41, op: C_MUL, args: argTypeList{arg_rd_rs1_p, arg_rs2_p}},
 	// C.MV rd_n0, c_rs2_n0
 	{mask: 0x0000f003, value: 0x00008002, op: C_MV, args: argTypeList{arg_rd_n0, arg_c_rs2_n0}},
 	// C.NOP c_nzimm6
 	{mask: 0x0000ef83, value: 0x00000001, op: C_NOP, args: argTypeList{arg_c_nzimm6}},
+	// C.NOT rd_rs1_p
+	{mask: 0x0000fc7f, value: 0x00009c75, op: C_NOT, args: argTypeList{arg_rd_rs1_p}},
 	// C.OR rd_rs1_p, rs2_p
 	{mask: 0x0000fc63, value: 0x00008c41, op: C_OR, args: argTypeList{arg_rd_rs1_p, arg_rs2_p}},
+	// C.SB rs2_p, rs1_p, c_uimm2
+	{mask: 0x0000fc03, value: 0x00008800, op: C_SB, args: argTypeList{arg_rs2_p, arg_rs1_p, arg_c_uimm2}},
 	// C.SD rs1_p, rs2_p, c_uimm8
 	{mask: 0x0000e003, value: 0x0000e000, op: C_SD, args: argTypeList{arg_rs1_p, arg_rs2_p, arg_c_uimm8}},
 	// C.SDSP c_rs2, c_uimm9sp_s
 	{mask: 0x0000e003, value: 0x0000e002, op: C_SDSP, args: argTypeList{arg_c_rs2, arg_c_uimm9sp_s}},
+	// C.SEXT.B rd_rs1_p
+	{mask: 0x0000fc7f, value: 0x00009c65, op: C_SEXT_B, args: argTypeList{arg_rd_rs1_p}},
+	// C.SEXT.H rd_rs1_p
+	{mask: 0x0000fc7f, value: 0x00009c6d, op: C_SEXT_H, args: argTypeList{arg_rd_rs1_p}},
+	// C.SH rs2_p, rs1_p, c_uimm1
+	{mask: 0x0000fc43, value: 0x00008c00, op: C_SH, args: argTypeList{arg_rs2_p, arg_rs1_p, arg_c_uimm1}},
 	// C.SLLI rd_rs1_n0, c_nzuimm6
 	{mask: 0x0000e003, value: 0x00000002, op: C_SLLI, args: argTypeList{arg_rd_rs1_n0, arg_c_nzuimm6}},
 	// C.SRAI rd_rs1_p, c_nzuimm6
@@ -2404,6 +2832,12 @@ var instFormats = [...]instFormat{
 	{mask: 0x0000ffff, value: 0x00000000, op: C_UNIMP, args: argTypeList{}},
 	// C.XOR rd_rs1_p, rs2_p
 	{mask: 0x0000fc63, value: 0x00008c21, op: C_XOR, args: argTypeList{arg_rd_rs1_p, arg_rs2_p}},
+	// C.ZEXT.B rd_rs1_p
+	{mask: 0x0000fc7f, value: 0x00009c61, op: C_ZEXT_B, args: argTypeList{arg_rd_rs1_p}},
+	// C.ZEXT.H rd_rs1_p
+	{mask: 0x0000fc7f, value: 0x00009c69, op: C_ZEXT_H, args: argTypeList{arg_rd_rs1_p}},
+	// C.ZEXT.W rd_rs1_p
+	{mask: 0x0000fc7f, value: 0x00009c71, op: C_ZEXT_W, args: argTypeList{arg_rd_rs1_p}},
 	// DIV rd, rs1, rs2
 	{mask: 0xfe00707f, value: 0x02004033, op: DIV, args: argTypeList{arg_rd, arg_rs1, arg_rs2}},
 	// DIVU rd, rs1, rs2
@@ -2432,6 +2866,8 @@ var instFormats = [...]instFormat{
 	{mask: 0xfff0707f, value: 0xe6001053, op: FCLASS_Q, args: argTypeList{arg_rd, arg_fs1}},
 	// FCLASS.S rd, fs1
 	{mask: 0xfff0707f, value: 0xe0001053, op: FCLASS_S, args: argTypeList{arg_rd, arg_fs1}},
+	// FCVTMOD.W.D rd, fs1
+	{mask: 0xfff0707f, value: 0xc2801053, op: FCVTMOD_W_D, args: argTypeList{arg_rd, arg_fs1}},
 	// FCVT.D.L fd, rs1
 	{mask: 0xfff0007f, value: 0xd2200053, op: FCVT_D_L, args: argTypeList{arg_fd, arg_rs1}},
 	// FCVT.D.LU fd, rs1
@@ -2534,6 +2970,14 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0xa0002053, op: FEQ_S, args: argTypeList{arg_rd, arg_fs1, arg_fs2}},
 	// FLD fd, rs1_mem
 	{mask: 0x0000707f, value: 0x00003007, op: FLD, args: argTypeList{arg_fd, arg_rs1_mem}},
+	// FLEQ.D rd, fs1, fs2
+	{mask: 0xfe00707f, value: 0xa2004053, op: FLEQ_D, args: argTypeList{arg_rd, arg_fs1, arg_fs2}},
+	// FLEQ.H rd, fs1, fs2
+	{mask: 0xfe00707f, value: 0xa4004053, op: FLEQ_H, args: argTypeList{arg_rd, arg_fs1, arg_fs2}},
+	// FLEQ.Q rd, fs1, fs2
+	{mask: 0xfe00707f, value: 0xa6004053, op: FLEQ_Q, args: argTypeList{arg_rd, arg_fs1, arg_fs2}},
+	// FLEQ.S rd, fs1, fs2
+	{mask: 0xfe00707f, value: 0xa0004053, op: FLEQ_S, args: argTypeList{arg_rd, arg_fs1, arg_fs2}},
 	// FLE.D rd, fs1, fs2
 	{mask: 0xfe00707f, value: 0xa2000053, op: FLE_D, args: argTypeList{arg_rd, arg_fs1, arg_fs2}},
 	// FLE.H rd, fs1, fs2
@@ -2544,8 +2988,24 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0xa0000053, op: FLE_S, args: argTypeList{arg_rd, arg_fs1, arg_fs2}},
 	// FLH fd, rs1_mem
 	{mask: 0x0000707f, value: 0x00001007, op: FLH, args: argTypeList{arg_fd, arg_rs1_mem}},
+	// FLI.D fd, zimm
+	{mask: 0xfff0707f, value: 0xf2100053, op: FLI_D, args: argTypeList{arg_fd, arg_zimm}},
+	// FLI.H fd, zimm
+	{mask: 0xfff0707f, value: 0xf4100053, op: FLI_H, args: argTypeList{arg_fd, arg_zimm}},
+	// FLI.Q fd, zimm
+	{mask: 0xfff0707f, value: 0xf6100053, op: FLI_Q, args: argTypeList{arg_fd, arg_zimm}},
+	// FLI.S fd, zimm
+	{mask: 0xfff0707f, value: 0xf0100053, op: FLI_S, args: argTypeList{arg_fd, arg_zimm}},
 	// FLQ fd, rs1_mem
 	{mask: 0x0000707f, value: 0x00004007, op: FLQ, args: argTypeList{arg_fd, arg_rs1_mem}},
+	// FLTQ.D rd, fs1, fs2
+	{mask: 0xfe00707f, value: 0xa2005053, op: FLTQ_D, args: argTypeList{arg_rd, arg_fs1, arg_fs2}},
+	// FLTQ.H rd, fs1, fs2
+	{mask: 0xfe00707f, value: 0xa4005053, op: FLTQ_H, args: argTypeList{arg_rd, arg_fs1, arg_fs2}},
+	// FLTQ.Q rd, fs1, fs2
+	{mask: 0xfe00707f, value: 0xa6005053, op: FLTQ_Q, args: argTypeList{arg_rd, arg_fs1, arg_fs2}},
+	// FLTQ.S rd, fs1, fs2
+	{mask: 0xfe00707f, value: 0xa0005053, op: FLTQ_S, args: argTypeList{arg_rd, arg_fs1, arg_fs2}},
 	// FLT.D rd, fs1, fs2
 	{mask: 0xfe00707f, value: 0xa2001053, op: FLT_D, args: argTypeList{arg_rd, arg_fs1, arg_fs2}},
 	// FLT.H rd, fs1, fs2
@@ -2564,6 +3024,14 @@ var instFormats = [...]instFormat{
 	{mask: 0x0600007f, value: 0x06000043, op: FMADD_Q, args: argTypeList{arg_fd, arg_fs1, arg_fs2, arg_fs3}},
 	// FMADD.S fd, fs1, fs2, fs3
 	{mask: 0x0600007f, value: 0x00000043, op: FMADD_S, args: argTypeList{arg_fd, arg_fs1, arg_fs2, arg_fs3}},
+	// FMAXM.D fd, fs1, fs2
+	{mask: 0xfe00707f, value: 0x2a003053, op: FMAXM_D, args: argTypeList{arg_fd, arg_fs1, arg_fs2}},
+	// FMAXM.H fd, fs1, fs2
+	{mask: 0xfe00707f, value: 0x2c003053, op: FMAXM_H, args: argTypeList{arg_fd, arg_fs1, arg_fs2}},
+	// FMAXM.Q fd, fs1, fs2
+	{mask: 0xfe00707f, value: 0x2e003053, op: FMAXM_Q, args: argTypeList{arg_fd, arg_fs1, arg_fs2}},
+	// FMAXM.S fd, fs1, fs2
+	{mask: 0xfe00707f, value: 0x28003053, op: FMAXM_S, args: argTypeList{arg_fd, arg_fs1, arg_fs2}},
 	// FMAX.D fd, fs1, fs2
 	{mask: 0xfe00707f, value: 0x2a001053, op: FMAX_D, args: argTypeList{arg_fd, arg_fs1, arg_fs2}},
 	// FMAX.H fd, fs1, fs2
@@ -2572,6 +3040,14 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00707f, value: 0x2e001053, op: FMAX_Q, args: argTypeList{arg_fd, arg_fs1, arg_fs2}},
 	// FMAX.S fd, fs1, fs2
 	{mask: 0xfe00707f, value: 0x28001053, op: FMAX_S, args: argTypeList{arg_fd, arg_fs1, arg_fs2}},
+	// FMINM.D fd, fs1, fs2
+	{mask: 0xfe00707f, value: 0x2a002053, op: FMINM_D, args: argTypeList{arg_fd, arg_fs1, arg_fs2}},
+	// FMINM.H fd, fs1, fs2
+	{mask: 0xfe00707f, value: 0x2c002053, op: FMINM_H, args: argTypeList{arg_fd, arg_fs1, arg_fs2}},
+	// FMINM.Q fd, fs1, fs2
+	{mask: 0xfe00707f, value: 0x2e002053, op: FMINM_Q, args: argTypeList{arg_fd, arg_fs1, arg_fs2}},
+	// FMINM.S fd, fs1, fs2
+	{mask: 0xfe00707f, value: 0x28002053, op: FMINM_S, args: argTypeList{arg_fd, arg_fs1, arg_fs2}},
 	// FMIN.D fd, fs1, fs2
 	{mask: 0xfe00707f, value: 0x2a000053, op: FMIN_D, args: argTypeList{arg_fd, arg_fs1, arg_fs2}},
 	// FMIN.H fd, fs1, fs2
@@ -2596,6 +3072,10 @@ var instFormats = [...]instFormat{
 	{mask: 0xfe00007f, value: 0x16000053, op: FMUL_Q, args: argTypeList{arg_fd, arg_fs1, arg_fs2}},
 	// FMUL.S fd, fs1, fs2
 	{mask: 0xfe00007f, value: 0x10000053, op: FMUL_S, args: argTypeList{arg_fd, arg_fs1, arg_fs2}},
+	// FMVH.X.Q rd, fs1
+	{mask: 0xfff0707f, value: 0xe6100053, op: FMVH_X_Q, args: argTypeList{arg_rd, arg_fs1}},
+	// FMVP.Q.X fd, rs1, rs2
+	{mask: 0xfe00707f, value: 0xb6000053, op: FMVP_Q_X, args: argTypeList{arg_fd, arg_rs1, arg_rs2}},
 	// FMV.D.X fd, rs1
 	{mask: 0xfff0707f, value: 0xf2000053, op: FMV_D_X, args: argTypeList{arg_fd, arg_rs1}},
 	// FMV.H.X fd, rs1
@@ -2624,6 +3104,22 @@ var instFormats = [...]instFormat{
 	{mask: 0x0600007f, value: 0x0600004b, op: FNMSUB_Q, args: argTypeList{arg_fd, arg_fs1, arg_fs2, arg_fs3}},
 	// FNMSUB.S fd, fs1, fs2, fs3
 	{mask: 0x0600007f, value: 0x0000004b, op: FNMSUB_S, args: argTypeList{arg_fd, arg_fs1, arg_fs2, arg_fs3}},
+	// FROUNDNX.D fd, fs1
+	{mask: 0xfff0007f, value: 0x42500053, op: FROUNDNX_D, args: argTypeList{arg_fd, arg_fs1}},
+	// FROUNDNX.H fd, fs1
+	{mask: 0xfff0007f, value: 0x44500053, op: FROUNDNX_H, args: argTypeList{arg_fd, arg_fs1}},
+	// FROUNDNX.Q fd, fs1
+	{mask: 0xfff0007f, value: 0x46500053, op: FROUNDNX_Q, args: argTypeList{arg_fd, arg_fs1}},
+	// FROUNDNX.S fd, fs1
+	{mask: 0xfff0007f, value: 0x40500053, op: FROUNDNX_S, args: argTypeList{arg_fd, arg_fs1}},
+	// FROUND.D fd, fs1
+	{mask: 0xfff0007f, value: 0x42400053, op: FROUND_D, args: argTypeList{arg_fd, arg_fs1}},
+	// FROUND.H fd, fs1
+	{mask: 0xfff0007f, value: 0x44400053, op: FROUND_H, args: argTypeList{arg_fd, arg_fs1}},
+	// FROUND.Q fd, fs1
+	{mask: 0xfff0007f, value: 0x46400053, op: FROUND_Q, args: argTypeList{arg_fd, arg_fs1}},
+	// FROUND.S fd, fs1
+	{mask: 0xfff0007f, value: 0x40400053, op: FROUND_S, args: argTypeList{arg_fd, arg_fs1}},
 	// FSD fs2, rs1_store
 	{mask: 0x0000707f, value: 0x00003027, op: FSD, args: argTypeList{arg_fs2, arg_rs1_store}},
 	// FSGNJN.D fd, fs1, fs2
@@ -4170,6 +4666,10 @@ var instFormats = [...]instFormat{
 	{mask: 0xfc0ff07f, value: 0x48022057, op: VZEXT_VF4, args: argTypeList{arg_vm, arg_vs2, arg_vd}},
 	// VZEXT.VF8 vm, vs2, vd
 	{mask: 0xfc0ff07f, value: 0x48012057, op: VZEXT_VF8, args: argTypeList{arg_vm, arg_vs2, arg_vd}},
+	// WRS.NTO
+	{mask: 0xffffffff, value: 0x00d00073, op: WRS_NTO, args: argTypeList{}},
+	// WRS.STO
+	{mask: 0xffffffff, value: 0x01d00073, op: WRS_STO, args: argTypeList{}},
 	// XNOR rd, rs1, rs2
 	{mask: 0xfe00707f, value: 0x40004033, op: XNOR, args: argTypeList{arg_rd, arg_rs1, arg_rs2}},
 	// XOR rd, rs1, rs2

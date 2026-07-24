@@ -58,10 +58,40 @@ goSyntaxSwitch:
 		AMOOR_D_RL, AMOOR_D_AQRL, AMOOR_W, AMOOR_W_AQ, AMOOR_W_RL, AMOOR_W_AQRL, AMOSWAP_D,
 		AMOSWAP_D_AQ, AMOSWAP_D_RL, AMOSWAP_D_AQRL, AMOSWAP_W, AMOSWAP_W_AQ, AMOSWAP_W_RL,
 		AMOSWAP_W_AQRL, AMOXOR_D, AMOXOR_D_AQ, AMOXOR_D_RL, AMOXOR_D_AQRL, AMOXOR_W,
-		AMOXOR_W_AQ, AMOXOR_W_RL, AMOXOR_W_AQRL, SC_D, SC_D_AQ, SC_D_RL, SC_D_AQRL,
-		SC_W, SC_W_AQ, SC_W_RL, SC_W_AQRL:
+		AMOXOR_W_AQ, AMOXOR_W_RL, AMOXOR_W_AQRL, AMOADD_B, AMOADD_B_AQ, AMOADD_B_AQRL,
+		AMOADD_B_RL, AMOADD_H, AMOADD_H_AQ, AMOADD_H_AQRL, AMOADD_H_RL, AMOAND_B,
+		AMOAND_B_AQ, AMOAND_B_AQRL, AMOAND_B_RL, AMOAND_H, AMOAND_H_AQ, AMOAND_H_AQRL,
+		AMOAND_H_RL, AMOCAS_B, AMOCAS_B_AQ, AMOCAS_B_AQRL, AMOCAS_B_RL, AMOCAS_H,
+		AMOCAS_H_AQ, AMOCAS_H_AQRL, AMOCAS_H_RL, AMOMAXU_B, AMOMAXU_B_AQ, AMOMAXU_B_AQRL,
+		AMOMAXU_B_RL, AMOMAXU_H, AMOMAXU_H_AQ, AMOMAXU_H_AQRL, AMOMAXU_H_RL, AMOMAX_B,
+		AMOMAX_B_AQ, AMOMAX_B_AQRL, AMOMAX_B_RL, AMOMAX_H, AMOMAX_H_AQ, AMOMAX_H_AQRL,
+		AMOMAX_H_RL, AMOMINU_B, AMOMINU_B_AQ, AMOMINU_B_AQRL, AMOMINU_B_RL, AMOMINU_H,
+		AMOMINU_H_AQ, AMOMINU_H_AQRL, AMOMINU_H_RL, AMOMIN_B, AMOMIN_B_AQ, AMOMIN_B_AQRL,
+		AMOMIN_B_RL, AMOMIN_H, AMOMIN_H_AQ, AMOMIN_H_AQRL, AMOMIN_H_RL, AMOOR_B,
+		AMOOR_B_AQ, AMOOR_B_AQRL, AMOOR_B_RL, AMOOR_H, AMOOR_H_AQ, AMOOR_H_AQRL,
+		AMOOR_H_RL, AMOSWAP_B, AMOSWAP_B_AQ, AMOSWAP_B_AQRL, AMOSWAP_B_RL, AMOSWAP_H,
+		AMOSWAP_H_AQ, AMOSWAP_H_AQRL, AMOSWAP_H_RL, AMOXOR_B, AMOXOR_B_AQ, AMOXOR_B_AQRL,
+		AMOXOR_B_RL, AMOXOR_H, AMOXOR_H_AQ, AMOXOR_H_AQRL, AMOXOR_H_RL,
+		SC_D, SC_D_AQ, SC_D_RL, SC_D_AQRL, SC_W, SC_W_AQ, SC_W_RL, SC_W_AQRL:
 		// Atomic instructions have special operand order.
 		args[2], args[1] = args[1], args[2]
+
+	case ADD:
+		if inst.Args[0].(Reg) == X0 && inst.Args[1].(Reg) == X0 {
+			switch inst.Args[2].(Reg) {
+			case X2:
+				op = "NTLP1"
+			case X3:
+				op = "NTLPALL"
+			case X4:
+				op = "NTLS1"
+			case X5:
+				op = "NTLALL"
+			default:
+				break goSyntaxSwitch
+			}
+			args = nil
+		}
 
 	case ADDI:
 		if inst.Args[2].(Simm).Imm == 0 {
@@ -71,7 +101,7 @@ goSyntaxSwitch:
 
 	case ADDIW:
 		if inst.Args[2].(Simm).Imm == 0 {
-			op = "MOVW"
+			op = "SEXTW"
 			args = args[:len(args)-1]
 		}
 
@@ -329,6 +359,12 @@ goSyntaxSwitch:
 			args = args[:len(args)-1]
 		}
 
+	case ADD_UW:
+		if inst.Args[2].(Reg) == X0 {
+			op = "ZEXTW"
+			args = args[:len(args)-1]
+		}
+
 	case XORI:
 		if inst.Args[2].(Simm).String() == "-1" {
 			op = "NOT"
@@ -384,6 +420,20 @@ goSyntaxSwitch:
 
 	case VSETVL:
 		args[0], args[2] = args[2], args[0]
+
+	case FLI_S, FLI_D, FLI_H, FLI_Q:
+		if len(args) > 1 {
+			switch inst.Op {
+			case FLI_S:
+				args[1] = fliSConstants[inst.Args[1].(Uimm).Imm]
+			case FLI_D:
+				args[1] = fliDConstants[inst.Args[1].(Uimm).Imm]
+			case FLI_H:
+				args[1] = fliHConstants[inst.Args[1].(Uimm).Imm]
+			case FLI_Q:
+				args[1] = fliQConstants[inst.Args[1].(Uimm).Imm]
+			}
+		}
 	}
 
 	// Reverse args, placing dest last.
@@ -490,4 +540,144 @@ func plan9VectorOp(inst Inst, args []string) string {
 
 	op = strings.Replace(op, ".", "", -1)
 	return op + " " + strings.Join(args, ", ")
+}
+
+var fliSConstants = [32]string{
+	"$(-1.0)",
+	"$(1.1754943508222875e-38)",
+	"$(1.52587890625e-05)",
+	"$(3.0517578125e-05)",
+	"$(0.00390625)",
+	"$(0.0078125)",
+	"$(0.0625)",
+	"$(0.125)",
+	"$(0.25)",
+	"$(0.3125)",
+	"$(0.375)",
+	"$(0.4375)",
+	"$(0.5)",
+	"$(0.625)",
+	"$(0.75)",
+	"$(0.875)",
+	"$(1.0)",
+	"$(1.25)",
+	"$(1.5)",
+	"$(1.75)",
+	"$(2.0)",
+	"$(2.5)",
+	"$(3.0)",
+	"$(4.0)",
+	"$(8.0)",
+	"$(16.0)",
+	"$(128.0)",
+	"$(256.0)",
+	"$(32768.0)",
+	"$(65536.0)",
+	"$(+Inf)",
+	"$(NaN)",
+}
+
+var fliDConstants = [32]string{
+	"$(-1.0)",
+	"$(2.2250738585072014e-308)",
+	"$(1.52587890625e-05)",
+	"$(3.0517578125e-05)",
+	"$(0.00390625)",
+	"$(0.0078125)",
+	"$(0.0625)",
+	"$(0.125)",
+	"$(0.25)",
+	"$(0.3125)",
+	"$(0.375)",
+	"$(0.4375)",
+	"$(0.5)",
+	"$(0.625)",
+	"$(0.75)",
+	"$(0.875)",
+	"$(1.0)",
+	"$(1.25)",
+	"$(1.5)",
+	"$(1.75)",
+	"$(2.0)",
+	"$(2.5)",
+	"$(3.0)",
+	"$(4.0)",
+	"$(8.0)",
+	"$(16.0)",
+	"$(128.0)",
+	"$(256.0)",
+	"$(32768.0)",
+	"$(65536.0)",
+	"$(+Inf)",
+	"$(NaN)",
+}
+
+var fliHConstants = [32]string{
+	"$(-1.0)",
+	"$(6.103515625e-05)",
+	"$(1.52587890625e-05)",
+	"$(3.0517578125e-05)",
+	"$(0.00390625)",
+	"$(0.0078125)",
+	"$(0.0625)",
+	"$(0.125)",
+	"$(0.25)",
+	"$(0.3125)",
+	"$(0.375)",
+	"$(0.4375)",
+	"$(0.5)",
+	"$(0.625)",
+	"$(0.75)",
+	"$(0.875)",
+	"$(1.0)",
+	"$(1.25)",
+	"$(1.5)",
+	"$(1.75)",
+	"$(2.0)",
+	"$(2.5)",
+	"$(3.0)",
+	"$(4.0)",
+	"$(8.0)",
+	"$(16.0)",
+	"$(128.0)",
+	"$(256.0)",
+	"$(32768.0)",
+	"$(65536.0)",
+	"$(+Inf)",
+	"$(NaN)",
+}
+
+var fliQConstants = [32]string{
+	"$(-1.0)",
+	"$(3.3621031431120935062626778173217526e-4932)",
+	"$(1.52587890625e-05)",
+	"$(3.0517578125e-05)",
+	"$(0.00390625)",
+	"$(0.0078125)",
+	"$(0.0625)",
+	"$(0.125)",
+	"$(0.25)",
+	"$(0.3125)",
+	"$(0.375)",
+	"$(0.4375)",
+	"$(0.5)",
+	"$(0.625)",
+	"$(0.75)",
+	"$(0.875)",
+	"$(1.0)",
+	"$(1.25)",
+	"$(1.5)",
+	"$(1.75)",
+	"$(2.0)",
+	"$(2.5)",
+	"$(3.0)",
+	"$(4.0)",
+	"$(8.0)",
+	"$(16.0)",
+	"$(128.0)",
+	"$(256.0)",
+	"$(32768.0)",
+	"$(65536.0)",
+	"$(+Inf)",
+	"$(NaN)",
 }
