@@ -330,14 +330,6 @@ a32f537e|	sw x5,2047(x6)
 b3427300|	xor x5,x6,x7
 9342f37f|	xori x5,x6,2047
 93c2ffff|	not x5,x31
-339a6a49|	bclr x20,x21,x22
-931bfc48|	bclri x23,x24,0xf
-b35cbd49|	bext x25,x26,x27
-13de8e48|	bexti x28,x29,0x8
-339f0f68|	binv x30,x31,x0
-9310016a|	binvi x1,x2,0x20
-b3115228|	bset x3,x4,x5
-1393f32b|	bseti x6,x7,0x3f
 4000|	addi x8,x2,4
 2041|	lw x8,64(x10)
 94d0|	sw x13,32(x9)
@@ -533,6 +525,16 @@ bb56f760|	rorw x13,x14,x15
 b313530a|	clmul	x7,x6,x5
 b333530a|	clmulh	x7,x6,x5
 b323530a|	clmulr	x7,x6,x5
+
+# 28.4.4. Zbs: Single-bit instructions
+339a6a49|	bclr x20,x21,x22
+931bfc48|	bclri x23,x24,0xf
+b35cbd49|	bext x25,x26,x27
+13de8e48|	bexti x28,x29,0x8
+339f0f68|	binv x30,x31,x0
+9310016a|	binvi x1,x2,0x20
+b3115228|	bset x3,x4,x5
+1393f32b|	bseti x6,x7,0x3f
 
 # "V" Standard Extension for Vector Operations, Version 1.0
 
