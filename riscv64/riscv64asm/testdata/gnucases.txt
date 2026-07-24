@@ -370,6 +370,11 @@ a260|	ld x1,8(x2)
 8624|	fld f9,64(x2)
 3eb0|	fsd f15,32(x2)
 
+# 8.1. "Zicntr" Extension for Base Counters and Timers
+f32200c0|	rdcycle x5
+f32210c0|	rdtime x5
+f32220c0|	rdinstret x5
+
 # 9. "Zihintntl" Extension for Non-Temporal Locality Hints, Version 1.0
 33002000|	ntl.p1
 33003000|	ntl.pall

@@ -323,6 +323,11 @@ b3427300|	XOR X7, X6, X5
 9342f37f|	XORI $2047, X6, X5
 93c2ffff|	NOT X31, X5
 
+# 8.1. "Zicntr" Extension for Base Counters and Timers
+f32200c0|	RDCYCLE X5
+f32210c0|	RDTIME X5
+f32220c0|	RDINSTRET X5
+
 # 9. "Zihintntl" Extension for Non-Temporal Locality Hints, Version 1.0
 33002000|	NTLP1
 33003000|	NTLPALL
