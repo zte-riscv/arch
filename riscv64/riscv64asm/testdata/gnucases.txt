@@ -392,6 +392,20 @@ b373530e|	czero.nez x7,x6,x5
 7300d000|	wrs.nto
 7300d001|	wrs.sto
 
+# 16.: "Zacas" Extension for Atomic Compare-and-Swap (CAS) Instructions, Version 1.0.0
+afa2632e|	amocas.w.aqrl x5,x6,(x7)
+afa2632c|	amocas.w.aq x5,x6,(x7)
+afa2632a|	amocas.w.rl x5,x6,(x7)
+afa26328|	amocas.w x5,x6,(x7)
+afb2632e|	amocas.d.aqrl x5,x6,(x7)
+afb2632c|	amocas.d.aq x5,x6,(x7)
+afb2632a|	amocas.d.rl x5,x6,(x7)
+afb26328|	amocas.d x5,x6,(x7)
+2fc2632e|	amocas.q.aqrl x4,x6,(x7)
+2fc2632c|	amocas.q.aq x4,x6,(x7)
+2fc2632a|	amocas.q.rl x4,x6,(x7)
+2fc26328|	amocas.q x4,x6,(x7)
+
 # 16.: "Zabha" Extension for Byte and Halfword Atomic Memory Operations, Version 1.0
 af826300|	amoadd.b x5,x6,(x7)
 af826304|	amoadd.b.aq x5,x6,(x7)
