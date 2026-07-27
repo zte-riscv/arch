@@ -240,6 +240,11 @@ func decodeArg(aop argType, x uint32, index int) Arg {
 		imm := x << 12 >> 27
 		return Uimm{imm, true}
 
+	case arg_zimm6:
+		// 6-bit unsigned immediate from bit 26 (hi) and bits 19:15 (lo)
+		imm := (x >> 15) & 0x1f | (x >> 21) & 0x20
+		return Uimm{imm, true}
+
 	case arg_vtype_zimm10:
 		imm := x << 2 >> 22
 		return VType(imm)
@@ -375,6 +380,14 @@ func decodeArg(aop argType, x uint32, index int) Arg {
 			return nil
 		}
 		return Simm{int32(imm), true, 18}
+
+	case arg_c_uimm2:
+		imm := ((x>>6)&1) | (((x>>5)&1) << 1)
+		return Uimm{imm, false}
+
+	case arg_c_uimm1:
+		imm := ((x >> 5) & 0x1) << 1
+		return Uimm{imm, false}
 
 	default:
 		return nil
@@ -594,6 +607,70 @@ func convertCompressedIns(f *instFormat, args Args) Args {
 		f.op = CSRRW
 		newargs[0] = Reg(X0)
 		newargs[1] = CSR(CYCLE)
+		newargs[2] = Reg(X0)
+
+	case C_LBU:
+		f.op = LBU
+		newargs[0] = args[0]
+		newargs[1] = RegOffset{args[1].(Reg), Simm{int32(args[2].(Uimm).Imm), true, 12}}
+
+	case C_LHU:
+		f.op = LHU
+		newargs[0] = args[0]
+		newargs[1] = RegOffset{args[1].(Reg), Simm{int32(args[2].(Uimm).Imm), true, 12}}
+
+	case C_LH:
+		f.op = LH
+		newargs[0] = args[0]
+		newargs[1] = RegOffset{args[1].(Reg), Simm{int32(args[2].(Uimm).Imm), true, 12}}
+
+	case C_SB:
+		f.op = SB
+		newargs[0] = args[0]
+		newargs[1] = RegOffset{args[1].(Reg), Simm{int32(args[2].(Uimm).Imm), true, 12}}
+
+	case C_SH:
+		f.op = SH
+		newargs[0] = args[0]
+		newargs[1] = RegOffset{args[1].(Reg), Simm{int32(args[2].(Uimm).Imm), true, 12}}
+
+	case C_MUL:
+		f.op = MUL
+		newargs[0] = args[0]
+		newargs[1] = args[0]
+		newargs[2] = args[1]
+
+	case C_NOT:
+		f.op = XORI
+		newargs[0] = args[0]
+		newargs[1] = args[0]
+		newargs[2] = Simm{-1, true, 12}
+
+	case C_SEXT_B:
+		f.op = SEXT_B
+		newargs[0] = args[0]
+		newargs[1] = args[0]
+
+	case C_SEXT_H:
+		f.op = SEXT_H
+		newargs[0] = args[0]
+		newargs[1] = args[0]
+
+	case C_ZEXT_B:
+		f.op = ANDI
+		newargs[0] = args[0]
+		newargs[1] = args[0]
+		newargs[2] = Simm{255, true, 12}
+
+	case C_ZEXT_H:
+		f.op = ZEXT_H
+		newargs[0] = args[0]
+		newargs[1] = args[0]
+
+	case C_ZEXT_W:
+		f.op = ADD_UW
+		newargs[0] = args[0]
+		newargs[1] = args[0]
 		newargs[2] = Reg(X0)
 	}
 	return newargs

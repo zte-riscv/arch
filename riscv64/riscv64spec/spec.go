@@ -27,18 +27,26 @@ var extensions = []string{
 	"rv_c",
 	"rv_c_d",
 	"rv_d",
+	"rv_d_zfa",
 	"rv_f",
+	"rv_f_zfa",
 	"rv_i",
 	"rv_m",
 	"rv_q",
+	"rv_q_zfa",
 	"rv_v",
+	"rv_zabha",
+	"rv_zabha_zacas",
 	"rv_zacas",
+	"rv_zawrs",
 	"rv_zba",
 	"rv_zbb",
 	"rv_zbc",
 	"rv_zbs",
+	"rv_zcb",
 	"rv_zicbo",
 	"rv_zfh",
+	"rv_zfh_zfa",
 	"rv_zfhmin",
 	"rv_zicond",
 	"rv_zicsr",
@@ -48,6 +56,8 @@ var extensions = []string{
 	"rv_zvknha",
 	"rv_zvksed",
 	"rv_zvksh",
+	"rv_zvbb",
+	"rv_zvbc",
 	"rv64_a",
 	"rv64_c",
 	"rv64_d",
@@ -55,10 +65,12 @@ var extensions = []string{
 	"rv64_i",
 	"rv64_m",
 	"rv64_q",
+	"rv64_q_zfa",
 	"rv64_zacas",
 	"rv64_zba",
 	"rv64_zbb",
 	"rv64_zbs",
+	"rv64_zcb",
 	"rv64_zfh",
 }
 
@@ -116,7 +128,7 @@ func main() {
 
 			// skip $pseudo_op except rv_zbb/rv64_zbb
 			if words[0][0] == '$' {
-				if ext != "rv_zbb" && ext != "rv64_zbb" {
+				if ext != "rv64_zbb" {
 					continue
 				}
 				words = words[2:]
@@ -334,8 +346,11 @@ func inferFormats(argTypeList []string, op string) string {
 	case op == "VSLL_VI" || op == "VSRL_VI" || op == "VSRA_VI" || op == "VNSRL_WI" ||
 		op == "VNSRA_WI" || op == "VSSRL_VI" || op == "VSSRA_VI" || op == "VNCLIPU_WI" ||
 		op == "VNCLIP_WI" || op == "VSLIDEUP_VI" || op == "VSLIDEDOWN_VI" ||
-		op == "VRGATHER_VI":
+		op == "VRGATHER_VI" || op == "VWSLL_VI":
 		return "arg_vm, arg_vs2, arg_zimm5, arg_vd"
+
+	case op == "VROR_VI":
+		return "arg_vm, arg_vs2, arg_zimm6, arg_vd"
 
 	default:
 		var instStr []string
@@ -358,6 +373,11 @@ func decodeArgs(arg string, op string) string {
 		return "arg_rd"
 
 	case strings.Contains("arg_rs1", arg):
+		if strings.Contains(op, "FLI") {
+			// FLI instructions use the rs1 field to encode a 5-bit
+			// unsigned immediate selecting a floating-point constant.
+			return "arg_zimm"
+		}
 		if isFloatReg(op, "rs") {
 			return "arg_fs1"
 		}
@@ -509,6 +529,12 @@ func decodeArgs(arg string, op string) string {
 
 	case arg == "c_nzimm18lo":
 		return "arg_c_nzimm18"
+
+	case arg == "c_uimm2":
+		return "arg_c_uimm2"
+
+	case arg == "c_uimm1":
+		return "arg_c_uimm1"
 	}
 	return ""
 }
@@ -568,20 +594,24 @@ func isFloatReg(op string, reg string) bool {
 		strings.Contains(op, "VMFNE") || strings.Contains(op, "VMFGT") ||
 		strings.Contains(op, "VMFGE") || strings.Contains(op, "VFMERGE") ||
 		strings.Contains(op, "VFMV") || strings.Contains(op, "VFSLIDE1UP") ||
-		strings.Contains(op, "VFSLIDE1DOWN"):
+		strings.Contains(op, "VFSLIDE1DOWN") ||
+		strings.Contains(op, "FROUND") || strings.Contains(op, "FROUNDNX"):
 		return true
 
 	case strings.Contains(op, "FCLASS") || strings.Contains(op, "FCVT_L") ||
 		strings.Contains(op, "FCVT_W") || strings.Contains(op, "FEQ") ||
 		strings.Contains(op, "FLE") || strings.Contains(op, "FLT") ||
 		strings.Contains(op, "FMV_X_H") || strings.Contains(op, "FMV_X_D") ||
-		strings.Contains(op, "FMV_X_W"):
+		strings.Contains(op, "FMV_X_W") ||
+		strings.Contains(op, "FCVTMOD") || strings.Contains(op, "FLTQ") ||
+		strings.Contains(op, "FLEQ") || strings.Contains(op, "FMVH"):
 		return reg != "rd"
 
 	case strings.Contains(op, "FCVT_D") || strings.Contains(op, "FCVT_S") ||
 		strings.Contains(op, "FCVT_H") || strings.Contains(op, "FCVT_Q") ||
 		strings.Contains(op, "FMV_H_X") || strings.Contains(op, "FMV_D_X") ||
-		strings.Contains(op, "FMV_W_X"):
+		strings.Contains(op, "FMV_W_X") ||
+		strings.Contains(op, "FLI") || strings.Contains(op, "FMVP"):
 		return reg != "rs"
 
 	default:
