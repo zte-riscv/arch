@@ -19,18 +19,6 @@ afb26362|	AMOANDD X6, (X7), X5
 afa26360|	AMOANDW X6, (X7), X5
 afa26364|	AMOANDW X6, (X7), X5
 afa26362|	AMOANDW X6, (X7), X5
-afa2632e|	AMOCASW	X6, (X7), X5
-afa2632c|	AMOCASW	X6, (X7), X5
-afa2632a|	AMOCASW	X6, (X7), X5
-afa26328|	AMOCASW	X6, (X7), X5
-afb2632e|	AMOCASD	X6, (X7), X5
-afb2632c|	AMOCASD	X6, (X7), X5
-afb2632a|	AMOCASD	X6, (X7), X5
-afb26328|	AMOCASD	X6, (X7), X5
-2fc2632e|	AMOCASQ	X6, (X7), X4
-2fc2632c|	AMOCASQ	X6, (X7), X4
-2fc2632a|	AMOCASQ	X6, (X7), X4
-2fc26328|	AMOCASQ	X6, (X7), X4
 afb263e0|	AMOMAXUD X6, (X7), X5
 afb263e4|	AMOMAXUD X6, (X7), X5
 afb263e2|	AMOMAXUD X6, (X7), X5
@@ -381,6 +369,20 @@ b3115228|	BSET X5, X4, X3
 # 12.3: "Zicond" Extension for Integer Conditional Operations, Version 1.0.0
 b353530e|	CZEROEQZ X5, X6, X7
 b373530e|	CZERONEZ X5, X6, X7
+
+# 16.: "Zacas" Extension for Atomic Compare-and-Swap (CAS) Instructions, Version 1.0.0
+afa2632e|	AMOCASW	X6, (X7), X5
+afa2632c|	AMOCASW	X6, (X7), X5
+afa2632a|	AMOCASW	X6, (X7), X5
+afa26328|	AMOCASW	X6, (X7), X5
+afb2632e|	AMOCASD	X6, (X7), X5
+afb2632c|	AMOCASD	X6, (X7), X5
+afb2632a|	AMOCASD	X6, (X7), X5
+afb26328|	AMOCASD	X6, (X7), X5
+2fc2632e|	AMOCASQ	X6, (X7), X4
+2fc2632c|	AMOCASQ	X6, (X7), X4
+2fc2632a|	AMOCASQ	X6, (X7), X4
+2fc26328|	AMOCASQ	X6, (X7), X4
 
 # 19.6.1: Cache-Block Management Instructions (Zicbom), Version 1.0.0
 0fa01200|	CBOCLEAN (X5)
